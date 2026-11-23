@@ -13,25 +13,103 @@
 
         body {
             background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Mencegah layar bergeser ke samping */
         }
 
+        /* 1. SPANDUK ATAS (Penuh pojok kiri ke kanan, tidak terpotong) */
         .spanduk-atas {
             width: 100%;
             line-height: 0;
         }
 
         .spanduk-atas img {
-            width: 100%;      /* Membentang penuh dari pojok kiri ke pojok kanan layar */
-            height: auto;     /* Tinggi menyesuaikan otomatis mengikuti rasio asli gambar */
-            display: block;   /* Memastikan gambar tampil utuh tanpa terpotong */
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 2. AREA 3 BINGKAI GAMBAR DI BAWAH SPANDUK */
+        .area-bingkai {
+            width: 100%;
+            max-width: 1200px;
+            margin: clamp(20px, 4vw, 50px) auto; /* Jarak atas-bawah menyesuaikan ukuran layar */
+            padding: 0 5%; /* Jarak aman dari tepi kiri dan kanan layar */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: clamp(12px, 3vw, 40px); /* Jarak antar elemen menyesuaikan ukuran layar */
+        }
+
+        /* Pengaturan umum untuk bingkai kiri, tengah, dan kanan */
+        .bingkai {
+            flex: 1; /* Membagi ruang secara seimbang */
+            aspect-ratio: 1 / 1; /* Mengunci bentuk agar selalu presisi (tidak lonjong) */
+            border: 2px solid #004494; /* Garis tepi sementara agar posisi terlihat jelas */
+            background-color: #f4f7fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Bingkai Kotak Kiri & Kanan */
+        .bingkai-kotak {
+            border-radius: 0px; /* Sudut siku-siku murni */
+        }
+
+        /* Bingkai Lingkaran Tengah */
+        .bingkai-lingkaran {
+            border-radius: 50%; /* Membentuk lingkaran sempurna di semua ukuran layar */
+        }
+
+        /* Pengaturan gambar di dalam kotak/lingkaran agar utuh dan tidak terpotong */
+        .bingkai img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Gambar menyesuaikan ukuran ruang tanpa terpotong */
+            display: block;
+        }
+
+        /* Keterangan teks sementara sebelum gambar dimasukkan */
+        .label-sementara {
+            font-size: clamp(11px, 1.5vw, 15px);
+            color: #004494;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
+    <!-- Spanduk Atas -->
     <header class="spanduk-atas">
         <img src="file_00000000c808821199b244f777bdb40f.png" alt="Spanduk INFOTRINK">
     </header>
+
+    <!-- Susunan Kotak Kiri - Lingkaran Tengah - Kotak Kanan -->
+    <section class="area-bingkai">
+        
+        <!-- Kotak Kiri -->
+        <div class="bingkai bingkai-kotak">
+            <!-- Nanti ganti bagian span di bawah dengan: <img src="nama-gambar-kiri.png" alt="Gambar Kiri"> -->
+            <span class="label-sementara">Kotak Kiri</span>
+        </div>
+
+        <!-- Lingkaran Tengah -->
+        <div class="bingkai bingkai-lingkaran">
+            <!-- Nanti ganti bagian span di bawah dengan: <img src="nama-gambar-tengah.png" alt="Gambar Tengah"> -->
+            <span class="label-sementara">Lingkaran Tengah</span>
+        </div>
+
+        <!-- Kotak Kanan -->
+        <div class="bingkai bingkai-kotak">
+            <!-- Nanti ganti bagian span di bawah dengan: <img src="nama-gambar-kanan.png" alt="Gambar Kanan"> -->
+            <span class="label-sementara">Kotak Kanan</span>
+        </div>
+
+    </section>
 
 </body>
 </html>
