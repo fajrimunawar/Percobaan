@@ -23,10 +23,10 @@
             flex-direction: column;
         }
 
-        /* 1. Bagian Poster Atas: Diperbesar sedikit lagi (46.5vh) & mentok sudut */
+        /* 1. Bagian Poster Atas: Ukuran dan bentuk tetap */
         .banner-penuh {
             width: 100vw;
-            height: 46.5vh;
+            height: 45vh;
             margin: 0;
             padding: 0;
             line-height: 0;
@@ -46,7 +46,7 @@
             width: 100vw;
             background: linear-gradient(90deg, #003366 0%, #0059b3 50%, #003366 100%);
             color: #ffffff;
-            padding: 9px 0;
+            padding: 8px 0;
             overflow: hidden;
             position: relative;
             border-bottom: 3px solid #00a8ff;
@@ -84,31 +84,31 @@
             }
         }
 
-        /* 3. Bagian Konten Utama: Jarak dirapikan & teks terisi penuh sampai mentok bawah */
+        /* 3. Bagian Konten Utama: Jarak antar paragraf dikunci rapat & rapi */
         .konten-utama {
             flex: 1;
             width: 100vw;
-            padding: 10px 30px 10px 30px;
+            padding: 8px 28px 8px 28px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             background-color: #ffffff;
         }
 
         .header-judul {
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             flex-shrink: 0;
         }
 
         /* Judul Utama: Super besar, tegas, dan rapi */
         .judul-bagian {
-            font-size: 38px;
+            font-size: 36px;
             font-weight: 900;
             color: #003366;
-            letter-spacing: 1.8px;
+            letter-spacing: 1.6px;
             line-height: 1.1;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
 
@@ -120,45 +120,44 @@
             border-radius: 2px;
         }
 
-        /* Paragraf Penjelasan: Rapi, ukuran besar, & penuh sampai mentok bawah */
+        /* Paragraf Penjelasan: Jarak dikunci rapat (gap: 8px), tidak pernah berjauhan */
         .isi-penjelasan {
-            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding-top: 4px;
+            justify-content: flex-start;
+            gap: 8px;
         }
 
         .isi-penjelasan p {
-            font-size: 17px;
-            line-height: 1.46;
+            font-size: 16px;
+            line-height: 1.42;
             color: #1e293b;
             text-align: justify;
             text-justify: inter-word;
             margin: 0;
         }
 
-        /* Penyesuaian otomatis untuk layar tablet dengan tinggi standar */
+        /* Penyesuaian otomatis jika tinggi layar tablet lebih pendek */
         @media (max-height: 750px) {
             .banner-penuh {
-                height: 45.5vh;
-            }
-            .konten-utama {
-                padding: 8px 28px 8px 28px;
+                height: 44.5vh;
             }
             .judul-bagian {
-                font-size: 34px;
+                font-size: 32px;
+            }
+            .isi-penjelasan {
+                gap: 7px;
             }
             .isi-penjelasan p {
-                font-size: 16.5px;
-                line-height: 1.44;
+                font-size: 15.5px;
+                line-height: 1.38;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Gambar Poster Atas (Diperbesar sedikit lagi & mentok pojok) -->
+    <!-- 1. Gambar Poster Atas -->
     <div class="banner-penuh">
         <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
     </div>
