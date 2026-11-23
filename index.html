@@ -23,10 +23,10 @@
             flex-direction: column;
         }
 
-        /* 1. Bagian Poster Atas: Mentok pojok kiri ke kanan, ukuran besar & proporsional */
+        /* 1. Bagian Poster Atas: Ukuran dan bentuk tetap (tidak diubah) */
         .banner-penuh {
             width: 100vw;
-            height: 44vh;         /* Sedikit disesuaikan agar memberi ruang aman bagi paragraf bawah */
+            height: 44vh;
             margin: 0;
             padding: 0;
             line-height: 0;
@@ -35,7 +35,7 @@
         }
 
         .banner-penuh img {
-            width: 100%;          /* Mentok penuh dari pojok kiri ke pojok kanan */
+            width: 100%;
             height: 100%;
             object-fit: fill;
             display: block;
@@ -84,83 +84,80 @@
             }
         }
 
-        /* 3. Bagian Konten Utama: Rapi, jarak antar paragraf rapat wajar, & muat utuh di layar */
+        /* 3. Bagian Konten Utama: Judul naik dekat kalimat berjalan & ukuran teks lebih besar */
         .konten-utama {
             flex: 1;
             width: 100vw;
-            padding: 16px 36px 20px 36px;
+            padding: 12px 34px 14px 34px; /* Jarak atas dekat dengan kalimat berjalan */
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Memusatkan blok judul & paragraf secara seimbang */
+            justify-content: flex-start;   /* Judul langsung berada di atas mendekati running text */
             background-color: #ffffff;
         }
 
         .header-judul {
             text-align: center;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             flex-shrink: 0;
         }
 
         .judul-bagian {
-            font-size: 21px;
+            font-size: 26px;               /* Ukuran judul diperbesar */
             font-weight: 800;
             color: #003366;
-            letter-spacing: 1.2px;
-            margin-bottom: 6px;
+            letter-spacing: 1.3px;
+            margin-bottom: 5px;
             text-transform: uppercase;
         }
 
         .garis-judul {
-            width: 80px;
+            width: 95px;
             height: 3.5px;
             background: linear-gradient(90deg, #0059b3, #00a8ff);
             margin: 0 auto;
             border-radius: 2px;
         }
 
-        /* Paragraf Penjelasan: Jarak antar paragraf rapat & rapi (tidak berjauhan) */
+        /* Paragraf Penjelasan: Huruf diperbesar, isi diperpanjang, & jarak antar paragraf rapat */
         .isi-penjelasan {
             display: flex;
             flex-direction: column;
-            gap: 11px; /* Jarak antar paragraf tetap dekat dan konsisten */
+            gap: 10px;                     /* Jarak atas-bawah antar paragraf rapat dan rapi */
         }
 
         .isi-penjelasan p {
-            font-size: 14.5px;
-            line-height: 1.56;
-            color: #334155;
+            font-size: 15.5px;             /* Ukuran huruf penjelasan diperbesar */
+            line-height: 1.54;
+            color: #1e293b;
             text-align: justify;
             text-justify: inter-word;
             margin: 0;
         }
 
-        /* Penyesuaian otomatis jika dibuka pada layar yang lebih pendek */
+        /* Penyesuaian otomatis jika dibuka pada layar dengan tinggi lebih rendah */
         @media (max-height: 680px) {
-            .banner-penuh {
-                height: 40vh;
-            }
             .konten-utama {
-                padding: 12px 30px 14px 30px;
+                padding: 10px 28px 10px 28px;
             }
             .header-judul {
-                margin-bottom: 10px;
+                margin-bottom: 8px;
             }
             .judul-bagian {
-                font-size: 19px;
+                font-size: 22px;
             }
             .isi-penjelasan {
-                gap: 8px;
+                gap: 7px;
             }
             .isi-penjelasan p {
-                font-size: 13.5px;
-                line-height: 1.48;
+                font-size: 14px;
+                line-height: 1.46;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Gambar Poster Atas (Mentok Pojok Kiri ke Kanan) -->
+    <!-- 1. Gambar Poster Atas (Ukuran & bentuk tetap) -->
     <div class="banner-penuh">
         <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
     </div>
@@ -181,13 +178,13 @@
 
         <div class="isi-penjelasan">
             <p>
-                <strong>INFOTRINK</strong> merupakan sebuah ekosistem digital terpadu yang dirancang secara strategis sebagai wadah utama untuk menghimpun, menghubungkan, mengembangkan, dan mengelola berbagai aktivitas maupun entitas dalam satu kesatuan platform berbasis website. Kehadiran INFOTRINK melampaui batas situs informasi konvensional ataupun sekadar halaman profil biasa, melainkan dibangun sebagai ruang digital terstruktur yang menyatukan beragam inisiatif yang memiliki karakteristik dan peran tersendiri ke dalam satu lingkungan yang saling terhubung, selaras, dan saling menguatkan.
+                <strong>INFOTRINK</strong> merupakan sebuah ekosistem digital terpadu yang dirancang secara strategis sebagai wadah utama untuk menghimpun, menghubungkan, mengembangkan, dan mengelola berbagai aktivitas maupun entitas dalam satu kesatuan platform berbasis website. Kehadiran INFOTRINK melampaui batas situs informasi konvensional ataupun sekadar halaman profil biasa, melainkan dibangun sebagai ruang digital terstruktur yang menyatukan beragam inisiatif yang memiliki karakteristik dan peran tersendiri ke dalam satu lingkungan yang saling terhubung, selaras, dan saling menguatkan guna menciptakan keteraturan informasi yang menyeluruh.
             </p>
             <p>
-                Dalam arah pembentukannya, INFOTRINK berfokus menjadi pusat dokumentasi serta penyajian informasi yang akuntabel mengenai perjalanan pembangunan, proses pengelolaan, progres pertumbuhan, hingga berbagai pencapaian nyata yang telah diwujudkan maupun yang tengah direncanakan. Melalui tata kelola informasi yang rapi dan sistematis, setiap aktivitas dan perkembangan yang berada di dalam lingkup ekosistem ini dapat terarsip dengan baik, mudah ditelusuri, serta memberikan gambaran yang utuh dan kredibel bagi siapa saja yang mengaksesnya.
+                Dalam arah pembentukannya, INFOTRINK berfokus menjadi pusat dokumentasi serta penyajian informasi yang akuntabel mengenai perjalanan pembangunan, proses pengelolaan, progres pertumbuhan, hingga berbagai pencapaian nyata yang telah diwujudkan maupun yang tengah direncanakan. Melalui tata kelola informasi yang rapi dan sistematis, setiap aktivitas, rekam jejak kerja, dan dinamika perkembangan yang berada di dalam lingkup ekosistem ini dapat terarsip dengan baik, mudah ditelusuri, serta memberikan gambaran yang utuh, objektif, dan kredibel bagi siapa saja yang mengaksesnya.
             </p>
             <p>
-                Secara menyeluruh, INFOTRINK merepresentasikan komitmen terhadap keterpaduan, transparansi progres, dan kesinambungan inovasi dalam satu atap digital. Platform ini terus bertumbuh sebagai ruang kolaborasi dan pusat rujukan informasi yang adaptif terhadap perkembangan zaman, sehingga mampu menghadirkan nilai guna jangka panjang bagi seluruh ekosistem yang tergabung di dalamnya.
+                Secara menyeluruh, INFOTRINK merepresentasikan komitmen kuat terhadap keterpaduan sistem, transparansi progres, dan kesinambungan inovasi dalam satu atap digital. Platform ini terus bertumbuh sebagai ruang kolaborasi, pusat rujukan informasi, sekaligus fondasi pengembangan jangka panjang yang adaptif terhadap kemajuan teknologi, sehingga mampu menghadirkan nilai guna nyata dan berkelanjutan bagi seluruh ekosistem yang tergabung di dalamnya.
             </p>
         </div>
     </section>
