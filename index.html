@@ -3,51 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFOTRINK - Digital Information & Knowledge Media</title>
+    <title>INFOTRINK</title>
     <style>
-        /* Menghilangkan jarak bawaan browser agar menempel sempurna di pojok */
-        * {
+        /* Menghilangkan semua jarak bawaan browser secara total */
+        html, body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
-        }
-
-        /* Wadah banner di bagian paling atas */
-        .header-banner {
             width: 100%;
-            background-color: #ffffff;
-            line-height: 0; /* Menghilangkan celah kosong tipis di bawah gambar */
+            overflow-x: hidden; /* Mencegah geser ke samping (kelewatan) */
         }
 
-        /* Pengaturan gambar poster */
-        .header-banner img {
-            width: 100%;          /* Penuh dari pojok kiri ke pojok kanan */
-            max-height: 50vh;     /* Tinggi maksimal 50% dari layar */
-            height: auto;         /* Menjaga proporsi asli gambar agar tidak gepeng */
-            object-fit: contain;  /* Memastikan seluruh gambar terlihat utuh dan TIDAK TERPOTONG */
-            display: block;
+        /* Wadah penuh selebar layar */
+        .banner-penuh {
+            width: 100vw; /* 100% lebar layar dari pojok kiri ke kanan */
+            margin: 0;
+            padding: 0;
+            line-height: 0;
         }
 
-        /* Contoh area konten di bawah poster */
-        .konten {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+        /* Pengaturan gambar agar mentok kiri-kanan & proporsional */
+        .banner-penuh img {
+            width: 100%;      /* Melebar penuh dari kiri ke kanan */
+            height: auto;     /* Tinggi menyesuaikan otomatis agar gambar lebih besar & tidak terpotong */
+            display: block;   /* Menghilangkan celah kosong */
         }
     </style>
 </head>
 <body>
 
-    <!-- Bagian Poster Atas -->
-    <header class="header-banner">
-        <!-- Ganti 'nama-file-gambar.jpg' dengan nama file gambar Anda -->
-        <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
-    </header>
+    <div class="banner-penuh">
+        <!-- Ganti 'nama-file-gambar.jpg' sesuai nama file gambar Anda di GitHub -->
+        <img src="nama-file-gambar.jpg" alt="">
+    </div>
 
 </body>
 </html>
