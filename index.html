@@ -23,10 +23,10 @@
             flex-direction: column;
         }
 
-        /* 1. Bagian Poster Atas: Ukuran dan bentuk tetap */
+        /* 1. Bagian Poster Atas: Ukuran diperbesar lagi (47.5vh) & mentok pojok kiri ke kanan */
         .banner-penuh {
             width: 100vw;
-            height: 45vh;
+            height: 47.5vh;
             margin: 0;
             padding: 0;
             line-height: 0;
@@ -84,11 +84,11 @@
             }
         }
 
-        /* 3. Bagian Konten Utama: Jarak antar paragraf dikunci rapat & rapi */
+        /* 3. Bagian Konten Utama: Rapat, penuh, & muat utuh sampai bawah */
         .konten-utama {
             flex: 1;
             width: 100vw;
-            padding: 8px 28px 8px 28px;
+            padding: 7px 26px 8px 26px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -97,17 +97,17 @@
 
         .header-judul {
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             flex-shrink: 0;
         }
 
         /* Judul Utama: Super besar, tegas, dan rapi */
         .judul-bagian {
-            font-size: 36px;
+            font-size: 35px;
             font-weight: 900;
             color: #003366;
-            letter-spacing: 1.6px;
-            line-height: 1.1;
+            letter-spacing: 1.5px;
+            line-height: 1.08;
             margin-bottom: 4px;
             text-transform: uppercase;
         }
@@ -120,17 +120,17 @@
             border-radius: 2px;
         }
 
-        /* Paragraf Penjelasan: Jarak dikunci rapat (gap: 8px), tidak pernah berjauhan */
+        /* Paragraf Penjelasan: Jarak rapat & kalimat diperpanjang penuh sampai bawah */
         .isi-penjelasan {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 8px;
+            gap: 7px;
         }
 
         .isi-penjelasan p {
-            font-size: 16px;
-            line-height: 1.42;
+            font-size: 15.5px;
+            line-height: 1.38;
             color: #1e293b;
             text-align: justify;
             text-justify: inter-word;
@@ -140,24 +140,24 @@
         /* Penyesuaian otomatis jika tinggi layar tablet lebih pendek */
         @media (max-height: 750px) {
             .banner-penuh {
-                height: 44.5vh;
+                height: 46.5vh;
             }
             .judul-bagian {
-                font-size: 32px;
+                font-size: 31px;
             }
             .isi-penjelasan {
-                gap: 7px;
+                gap: 6px;
             }
             .isi-penjelasan p {
-                font-size: 15.5px;
-                line-height: 1.38;
+                font-size: 14.8px;
+                line-height: 1.35;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Gambar Poster Atas -->
+    <!-- 1. Gambar Poster Atas (Ukuran lebih besar & mentok sudut) -->
     <div class="banner-penuh">
         <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
     </div>
@@ -178,13 +178,13 @@
 
         <div class="isi-penjelasan">
             <p>
-                <strong>INFOTRINK</strong> merupakan sebuah ekosistem digital terpadu yang dirancang secara strategis sebagai wadah utama untuk menghimpun, menghubungkan, mengembangkan, dan mengelola berbagai aktivitas maupun entitas dalam satu kesatuan platform berbasis website. Kehadiran INFOTRINK melampaui batas situs informasi konvensional ataupun sekadar halaman profil biasa, melainkan dibangun sebagai ruang digital terstruktur yang menyatukan beragam inisiatif dengan karakteristik serta peran tersendiri ke dalam satu lingkungan yang saling terhubung, selaras, dan saling menguatkan guna menciptakan tata kelola informasi yang menyeluruh serta terintegrasi secara profesional.
+                <strong>INFOTRINK</strong> merupakan sebuah ekosistem digital terpadu yang dirancang secara strategis sebagai wadah utama untuk menghimpun, menghubungkan, mengembangkan, dan mengelola berbagai aktivitas maupun entitas dalam satu kesatuan platform berbasis website. Kehadiran INFOTRINK melampaui batas situs informasi konvensional ataupun sekadar halaman profil biasa, melainkan dibangun sebagai ruang digital terstruktur yang menyatukan beragam inisiatif dengan karakteristik, fungsi, serta peran tersendiri ke dalam satu lingkungan yang saling terhubung, selaras, dan saling menguatkan guna menciptakan tata kelola informasi yang menyeluruh, terorganisasi, dan terintegrasi secara profesional.
             </p>
             <p>
-                Dalam arah pembentukannya, INFOTRINK berfokus menjadi pusat dokumentasi serta penyajian informasi yang akuntabel mengenai perjalanan pembangunan, proses pengelolaan, progres pertumbuhan, hingga berbagai pencapaian nyata yang telah diwujudkan maupun yang tengah direncanakan secara bertahap. Melalui pengelolaan informasi yang rapi, terstandar, dan sistematis, setiap aktivitas, rekam jejak kerja, inovasi layanan, serta dinamika perkembangan yang berada di dalam lingkup ekosistem ini dapat terarsip dengan baik, mudah ditelusuri, dan memberikan gambaran yang utuh, objektif, serta kredibel bagi siapa saja yang mengaksesnya.
+                Dalam arah pembentukannya, INFOTRINK berfokus menjadi pusat dokumentasi serta penyajian informasi yang akuntabel mengenai perjalanan pembangunan, proses pengelolaan, progres pertumbuhan, hingga berbagai pencapaian nyata yang telah diwujudkan maupun yang tengah direncanakan secara bertahap dan terukur. Melalui pengelolaan informasi yang rapi, terstandar, dan sistematis, setiap aktivitas, rekam jejak kerja, pengembangan inovasi, serta dinamika perubahan yang berada di dalam lingkup ekosistem ini dapat terarsip dengan baik, mudah ditelusuri kembali, dan memberikan gambaran yang utuh, objektif, transparan, serta kredibel bagi siapa saja yang mengaksesnya.
             </p>
             <p>
-                Secara menyeluruh, INFOTRINK merepresentasikan komitmen kuat terhadap keterpaduan sistem, transparansi progres, dan kesinambungan inovasi dalam satu atap digital yang modern. Platform ini terus bertumbuh sebagai ruang kolaborasi, pusat rujukan informasi utama, sekaligus fondasi pengembangan jangka panjang yang adaptif terhadap kemajuan teknologi global, sehingga mampu menghadirkan nilai guna nyata, terukur, dan berkelanjutan bagi seluruh ekosistem, mitra, maupun masyarakat luas yang terhubung di dalamnya setiap saat.
+                Secara menyeluruh, INFOTRINK merepresentasikan komitmen kuat terhadap keterpaduan sistem, akuntabilitas perkembangan, dan kesinambungan inovasi dalam satu atap digital yang modern dan dinamis. Platform ini terus bertumbuh sebagai ruang kolaborasi produktif, pusat rujukan informasi utama, sekaligus fondasi pengembangan jangka panjang yang adaptif terhadap kemajuan teknologi global dan kebutuhan zaman, sehingga mampu menghadirkan manfaat nyata, terarah, dan berkelanjutan bagi seluruh ekosistem, mitra strategis, maupun masyarakat luas yang terhubung di dalamnya setiap saat.
             </p>
         </div>
     </section>
