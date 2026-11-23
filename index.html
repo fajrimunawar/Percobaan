@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INFOTRINK - Ekosistem Digital Terpadu</title>
     <style>
-        /* Reset dasar dan pengaturan tinggi 1 layar penuh */
+        /* Reset dasar dan mengunci tinggi pas 1 layar tanpa scroll */
         * {
             margin: 0;
             padding: 0;
@@ -14,19 +14,19 @@
 
         html, body {
             width: 100%;
-            min-height: 100vh;
+            height: 100vh;       /* Tepat setinggi layar */
+            overflow: hidden;    /* Menghilangkan scroll atas-bawah dan kiri-kanan */
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #ffffff;
             color: #1e293b;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
         }
 
-        /* 1. Bagian Poster Atas (Mentok kiri-kanan & tinggi proporsional agar muat 1 layar) */
+        /* 1. Bagian Poster Atas (Lebih besar, mentok kiri-kanan, & tidak terpotong) */
         .banner-penuh {
             width: 100%;
-            background: linear-gradient(180deg, #e6f0fa 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #dcebfa 0%, #f4f9ff 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -36,18 +36,17 @@
 
         .banner-penuh img {
             width: 100%;
-            max-height: 35vh; /* Ukuran agak dikecilkan agar seimbang & muat 1 layar penuh */
-            object-fit: cover; /* Memastikan gambar tetap mentok kiri-kanan tanpa celah putih */
-            object-position: center;
+            max-height: 41vh;      /* Ukuran poster diperbesar agar proporsional & mengisi ruang kosong */
+            object-fit: contain;   /* Memastikan gambar TIDAK TERPOTONG sama sekali */
             display: block;
         }
 
-        /* 2. Kalimat Berjalan (Dari Kanan ke Kiri) */
+        /* 2. Kalimat Berjalan (Kanan ke Kiri dengan kecepatan sedang yang nyaman dibaca) */
         .running-text-container {
             width: 100%;
             background: linear-gradient(90deg, #003366 0%, #0059b3 50%, #003366 100%);
             color: #ffffff;
-            padding: 11px 0;
+            padding: 10px 0;
             overflow: hidden;
             position: relative;
             border-bottom: 3px solid #00a8ff;
@@ -60,11 +59,11 @@
         .running-text {
             display: inline-block;
             white-space: nowrap;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 500;
             letter-spacing: 0.4px;
-            /* Bergerak mulus dari kanan ke kiri */
-            animation: jalanKananKeKiri 26s linear infinite;
+            /* Kecepatan 36 detik: pas, tidak terlalu cepat dan tidak terlalu lambat */
+            animation: jalanKananKeKiri 36s linear infinite;
         }
 
         .running-text-container:hover .running-text {
@@ -86,24 +85,24 @@
             }
         }
 
-        /* 3. Bagian Konten Utama (Otomatis mengisi sisa ruang layar dengan pas) */
+        /* 3. Bagian Konten Utama (Jarak dekat yang pas dengan teks berjalan, tanpa space kosong berlebih) */
         .konten-utama {
             flex: 1;
             width: 100%;
-            padding: 24px 42px 28px 42px;
+            padding: 20px 44px 18px 44px; /* Jarak atas pas: dekat dengan kalimat berjalan tapi tidak mepet */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;   /* Teks naik rapi mendekati teks berjalan, menghilangkan celah kosong */
             background-color: #ffffff;
         }
 
         .judul-bagian {
-            font-size: 24px;
+            font-size: 23px;
             font-weight: 800;
             color: #003366;
             text-align: center;
             letter-spacing: 1.2px;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             text-transform: uppercase;
         }
 
@@ -111,39 +110,54 @@
             width: 80px;
             height: 3.5px;
             background: linear-gradient(90deg, #0059b3, #00a8ff);
-            margin: 0 auto 20px auto;
+            margin: 0 auto 16px auto;
             border-radius: 2px;
         }
 
         /* Paragraf Penjelasan Sejajar Kiri-Kanan (Justify) */
         .isi-penjelasan p {
-            font-size: 15px;
-            line-height: 1.68;
+            font-size: 14.5px;
+            line-height: 1.62;
             color: #334155;
             text-align: justify;
             text-justify: inter-word;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .isi-penjelasan p:last-child {
             margin-bottom: 0;
         }
 
-        /* Penyesuaian responsif jika dibuka di layar HP kecil */
-        @media (max-width: 768px) {
+        /* Penyesuaian khusus layar sangat pendek atau HP agar tetap tidak terpotong */
+        @media (max-height: 650px) {
             .banner-penuh img {
-                max-height: none;
-                height: auto;
+                max-height: 36vh;
             }
             .konten-utama {
-                padding: 22px 20px 30px 20px;
+                padding: 14px 32px 12px 32px;
             }
             .judul-bagian {
                 font-size: 20px;
             }
             .isi-penjelasan p {
-                font-size: 14.5px;
-                line-height: 1.65;
+                font-size: 13.5px;
+                line-height: 1.52;
+                margin-bottom: 9px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html, body {
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto;
+            }
+            .banner-penuh img {
+                max-height: none;
+                height: auto;
+            }
+            .konten-utama {
+                padding: 20px 20px 28px 20px;
             }
         }
     </style>
@@ -155,7 +169,7 @@
         <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
     </div>
 
-    <!-- 2. Kalimat Berjalan (Kanan ke Kiri) -->
+    <!-- 2. Kalimat Berjalan (Kanan ke Kiri, Kecepatan Sedang) -->
     <div class="running-text-container">
         <div class="running-text">
             Selamat Datang di <strong>INFOTRINK</strong> — Ekosistem Digital Terpadu sebagai Pusat Informasi, Dokumentasi, dan Pengelolaan Aktivitas Modern dalam Satu Ruang yang Terhubung dan Berkelanjutan <span class="pemisah">✦</span> Membangun Keterpaduan, Inovasi, dan Perkembangan Masa Depan.
