@@ -1,41 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFOTRINK</title>
-
+    <title>INFOTRINK - Digital Information & Knowledge Media</title>
     <style>
+        /* Menghilangkan jarak bawaan browser agar menempel sempurna di pojok */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            width: 100%;
-            min-height: 100%;
-            background-color: #ffffff;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
         }
 
-        .header-image {
-            display: block;
+        /* Wadah banner di bagian paling atas */
+        .header-banner {
             width: 100%;
-            height: 50vh;
-            object-fit: cover;
-            object-position: center;
+            background-color: #ffffff;
+            line-height: 0; /* Menghilangkan celah kosong tipis di bawah gambar */
+        }
+
+        /* Pengaturan gambar poster */
+        .header-banner img {
+            width: 100%;          /* Penuh dari pojok kiri ke pojok kanan */
+            max-height: 50vh;     /* Tinggi maksimal 50% dari layar */
+            height: auto;         /* Menjaga proporsi asli gambar agar tidak gepeng */
+            object-fit: contain;  /* Memastikan seluruh gambar terlihat utuh dan TIDAK TERPOTONG */
+            display: block;
+        }
+
+        /* Contoh area konten di bawah poster */
+        .konten {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
     </style>
 </head>
-
 <body>
 
-    <img 
-        src="512.webp" 
-        class="header-image" 
-        alt=""
-    >
+    <!-- Bagian Poster Atas -->
+    <header class="header-banner">
+        <!-- Ganti 'nama-file-gambar.jpg' dengan nama file gambar Anda -->
+        <img src="nama-file-gambar.jpg" alt="INFOTRINK Digital Information & Knowledge Media">
+    </header>
+
+    <!-- Bagian Konten Website -->
+    <main class="konten">
+        <h1>Selamat Datang di INFOTRINK</h1>
+        <p>Silakan isi konten utama website Anda di bagian ini.</p>
+    </main>
 
 </body>
 </html>
