@@ -11,18 +11,21 @@
             box-sizing: border-box;
         }
 
-        body {
-            background-color: #ffffff;
+        html, body {
+            width: 100%;
+            min-height: 100%;
+            background-color: #051937;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
 
-        /* 1. SPANDUK ATAS (Penuh pojok kiri ke kanan, utuh tidak terpotong) */
+        /* 1. SPANDUK ATAS (Penuh pojok kiri ke kanan, utuh tanpa terpotong) */
         .spanduk-atas {
             width: 100%;
             line-height: 0;
             position: relative;
-            z-index: 2;
+            z-index: 5;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .spanduk-atas img {
@@ -36,11 +39,12 @@
             position: relative;
             width: 100%;
             display: flex;
-            min-height: clamp(320px, 45vw, 620px); /* Tinggi proporsional di semua layar */
+            min-height: clamp(320px, 46vw, 640px);
             overflow: hidden;
+            background-color: #061e42;
         }
 
-        /* PANEL KIRI & KANAN (Saling bertemu di tengah, penuh dari pojok kiri ke kanan) */
+        /* PANEL KIRI & KANAN (Saling bertemu di garis tengah) */
         .panel-sisi {
             position: relative;
             width: 50%;
@@ -48,70 +52,65 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: filter 0.4s ease;
+            transition: filter 0.35s ease;
         }
 
-        /* Warna gradien dasar profesional sebelum gambar dimasukkan */
         .panel-kiri {
-            background: linear-gradient(135deg, #041d42 0%, #0a4d9c 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.25);
+            background: linear-gradient(145deg, #062147 0%, #0d4b96 100%);
+            border-right: 1px solid rgba(255, 255, 255, 0.22);
         }
 
         .panel-kanan {
-            background: linear-gradient(225deg, #062b61 0%, #1565c0 100%);
-            border-left: 1px solid rgba(255, 255, 255, 0.25);
+            background: linear-gradient(215deg, #072857 0%, #135eb8 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.22);
         }
 
-        /* Pengaturan Gambar di dalam Panel Kiri & Kanan */
+        /* Gambar pada Kotak Kiri & Kotak Kanan */
         .panel-sisi img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Gambar mengisi penuh area kotak tanpa celah */
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 1;
         }
 
-        /* Efek zoom halus & kilau elegan saat disentuh kursor */
         .panel-sisi:hover img {
             transform: scale(1.04);
         }
 
+        /* Lapisan gradasi halus agar transisi warna lebih dalam dan profesional */
         .panel-sisi::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(4, 24, 54, 0.45), transparent 60%);
+            background: linear-gradient(180deg, rgba(4, 20, 46, 0.12) 0%, rgba(4, 20, 46, 0.38) 100%);
             z-index: 2;
             pointer-events: none;
         }
 
-        /* LINGKARAN TENGAH (Tepat di perbatasan panel kiri & kanan) */
+        /* LINGKARAN TENGAH (Tepat di titik tengah perbatasan kiri & kanan) */
         .lingkaran-tengah {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: clamp(160px, 24vw, 330px); /* Ukuran otomatis menyesuaikan layar */
-            aspect-ratio: 1 / 1; /* Selalu bulat sempurna di HP, tablet, maupun PC */
+            width: clamp(165px, 24vw, 340px);
+            aspect-ratio: 1 / 1;
             border-radius: 50%;
-            background: linear-gradient(145deg, #ffffff, #e6eef8);
-            border: clamp(4px, 0.6vw, 8px) solid #ffffff;
-            outline: 2px solid rgba(0, 74, 153, 0.25);
+            background: linear-gradient(160deg, #ffffff 0%, #e4eef9 100%);
+            border: clamp(4px, 0.65vw, 9px) solid #ffffff;
+            box-shadow: 0 0 0 clamp(2px, 0.3vw, 4px) rgba(20, 94, 184, 0.45);
             z-index: 10;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.4s ease, outline-color 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .lingkaran-tengah:hover {
             transform: translate(-50%, -50%) scale(1.04);
-            outline-color: #0077ff;
         }
 
         .lingkaran-tengah img {
@@ -120,55 +119,31 @@
             object-fit: cover;
             display: block;
         }
-
-        /* Label Panduan Sementara (Otomatis hilang jika sudah diganti tag <img>) */
-        .label-panduan {
-            position: relative;
-            z-index: 3;
-            color: #ffffff;
-            background: rgba(0, 20, 50, 0.55);
-            backdrop-filter: blur(4px);
-            padding: 8px 18px;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            font-size: clamp(11px, 1.3vw, 15px);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-align: center;
-        }
-
-        .lingkaran-tengah .label-panduan {
-            color: #041d42;
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid #0a4d9c;
-        }
     </style>
 </head>
 <body>
 
-    <!-- 1. SPANDUK UTAMA INFOTRINK -->
+    <!-- 1. SPANDUK ATAS -->
     <header class="spanduk-atas">
         <img src="file_00000000c808821199b244f777bdb40f.png" alt="Spanduk INFOTRINK">
     </header>
 
-    <!-- 2. BAGIAN KOTAK KIRI - LINGKARAN TENGAH - KOTAK KANAN -->
+    <!-- 2. KOTAK KIRI - LINGKARAN TENGAH - KOTAK KANAN (SEMUA BERUPA GAMBAR) -->
     <section class="split-section">
 
-        <!-- KOTAK KIRI (50% Lebar Layar dari Pojok Kiri ke Tengah) -->
+        <!-- Gambar Kotak Kiri (Ganti nama file di src sesuai gambar kiri Anda) -->
         <div class="panel-sisi panel-kiri">
-            <!-- Ganti baris <span> di bawah dengan: <img src="gambar-kiri.jpg" alt="Gambar Kiri"> -->
-            <span class="label-panduan">GAMBAR KIRI</span>
+            <img src="gambar-kiri.jpg" alt="Visual Kiri">
         </div>
 
-        <!-- LINGKARAN TENGAH (Menimpa tepat di garis tengah) -->
+        <!-- Gambar Lingkaran Tengah (Ganti nama file di src sesuai gambar tengah Anda) -->
         <div class="lingkaran-tengah">
-            <!-- Ganti baris <span> di bawah dengan: <img src="gambar-tengah.jpg" alt="Gambar Tengah"> -->
-            <span class="label-panduan">GAMBAR<br>LINGKARAN</span>
+            <img src="gambar-tengah.jpg" alt="Visual Tengah">
         </div>
 
-        <!-- KOTAK KANAN (50% Lebar Layar dari Tengah ke Pojok Kanan) -->
+        <!-- Gambar Kotak Kanan (Ganti nama file di src sesuai gambar kanan Anda) -->
         <div class="panel-sisi panel-kanan">
-            <!-- Ganti baris <span> di bawah dengan: <img src="gambar-kanan.jpg" alt="Gambar Kanan"> -->
-            <span class="label-panduan">GAMBAR KANAN</span>
+            <img src="gambar-kanan.jpg" alt="Visual Kanan">
         </div>
 
     </section>
