@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INFOTRINK - Ekosistem Digital Terpadu</title>
     <style>
-        /* Reset dasar dan mengunci tinggi pas 1 layar tanpa scroll */
+        /* Reset penuh agar menempel di setiap sudut layar tanpa scroll */
         * {
             margin: 0;
             padding: 0;
@@ -13,9 +13,9 @@
         }
 
         html, body {
-            width: 100%;
-            height: 100vh;       /* Tepat setinggi layar */
-            overflow: hidden;    /* Menghilangkan scroll atas-bawah dan kiri-kanan */
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #ffffff;
             color: #1e293b;
@@ -23,27 +23,27 @@
             flex-direction: column;
         }
 
-        /* 1. Bagian Poster Atas (Lebih besar, mentok kiri-kanan, & tidak terpotong) */
+        /* 1. Bagian Poster Atas: Mentok pojok kiri ke kanan, ukuran besar & tidak terpotong */
         .banner-penuh {
-            width: 100%;
-            background: linear-gradient(180deg, #dcebfa 0%, #f4f9ff 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 100vw;
+            height: 46vh;         /* Ukuran poster besar & proporsional */
+            margin: 0;
+            padding: 0;
             line-height: 0;
             flex-shrink: 0;
+            overflow: hidden;
         }
 
         .banner-penuh img {
-            width: 100%;
-            max-height: 41vh;      /* Ukuran poster diperbesar agar proporsional & mengisi ruang kosong */
-            object-fit: contain;   /* Memastikan gambar TIDAK TERPOTONG sama sekali */
+            width: 100%;          /* Mentok penuh dari pojok kiri ke pojok kanan */
+            height: 100%;         /* Mengisi tinggi wadah poster */
+            object-fit: fill;     /* Memastikan lebar & tinggi pas 100% mentok sudut tanpa terpotong maupun celah kosong */
             display: block;
         }
 
-        /* 2. Kalimat Berjalan (Kanan ke Kiri dengan kecepatan sedang yang nyaman dibaca) */
+        /* 2. Kalimat Berjalan (Kanan ke Kiri, Kecepatan Sedang) */
         .running-text-container {
-            width: 100%;
+            width: 100vw;
             background: linear-gradient(90deg, #003366 0%, #0059b3 50%, #003366 100%);
             color: #ffffff;
             padding: 10px 0;
@@ -52,8 +52,8 @@
             border-bottom: 3px solid #00a8ff;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
             flex-shrink: 0;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
         }
 
         .running-text {
@@ -62,7 +62,6 @@
             font-size: 14.5px;
             font-weight: 500;
             letter-spacing: 0.4px;
-            /* Kecepatan 36 detik: pas, tidak terlalu cepat dan tidak terlalu lambat */
             animation: jalanKananKeKiri 36s linear infinite;
         }
 
@@ -85,24 +84,28 @@
             }
         }
 
-        /* 3. Bagian Konten Utama (Jarak dekat yang pas dengan teks berjalan, tanpa space kosong berlebih) */
+        /* 3. Bagian Konten Utama: Mengisi penuh sisa layar sampai bawah secara proporsional */
         .konten-utama {
             flex: 1;
-            width: 100%;
-            padding: 20px 44px 18px 44px; /* Jarak atas pas: dekat dengan kalimat berjalan tapi tidak mepet */
+            width: 100vw;
+            padding: 18px 36px 20px 36px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;   /* Teks naik rapi mendekati teks berjalan, menghilangkan celah kosong */
+            justify-content: space-between; /* Menyebar rapi dari atas ke bawah agar tidak ada ruang kosong besar di bawah */
             background-color: #ffffff;
         }
 
+        .header-judul {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
         .judul-bagian {
-            font-size: 23px;
+            font-size: 22px;
             font-weight: 800;
             color: #003366;
-            text-align: center;
             letter-spacing: 1.2px;
-            margin-bottom: 7px;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
 
@@ -110,66 +113,54 @@
             width: 80px;
             height: 3.5px;
             background: linear-gradient(90deg, #0059b3, #00a8ff);
-            margin: 0 auto 16px auto;
+            margin: 0 auto;
             border-radius: 2px;
         }
 
-        /* Paragraf Penjelasan Sejajar Kiri-Kanan (Justify) */
+        /* Paragraf Penjelasan Sejajar Kiri-Kanan (Justify) mengisi penuh ruang sampai bawah */
+        .isi-penjelasan {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly; /* Jarak antar paragraf otomatis pas memenuhi bagian bawah tanpa kelewatan */
+            padding-top: 8px;
+        }
+
         .isi-penjelasan p {
-            font-size: 14.5px;
+            font-size: 15px;
             line-height: 1.62;
             color: #334155;
             text-align: justify;
             text-justify: inter-word;
-            margin-bottom: 12px;
+            margin: 0;
         }
 
-        .isi-penjelasan p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Penyesuaian khusus layar sangat pendek atau HP agar tetap tidak terpotong */
-        @media (max-height: 650px) {
-            .banner-penuh img {
-                max-height: 36vh;
+        /* Penyesuaian otomatis untuk layar tablet/laptop dengan tinggi berbeda */
+        @media (max-height: 700px) {
+            .banner-penuh {
+                height: 43vh;
             }
             .konten-utama {
-                padding: 14px 32px 12px 32px;
+                padding: 14px 30px 14px 30px;
             }
             .judul-bagian {
                 font-size: 20px;
             }
             .isi-penjelasan p {
-                font-size: 13.5px;
+                font-size: 14px;
                 line-height: 1.52;
-                margin-bottom: 9px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            html, body {
-                height: auto;
-                min-height: 100vh;
-                overflow-y: auto;
-            }
-            .banner-penuh img {
-                max-height: none;
-                height: auto;
-            }
-            .konten-utama {
-                padding: 20px 20px 28px 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Gambar Poster Atas -->
+    <!-- 1. Gambar Poster Atas (Mentok Pojok Kiri ke Kanan & Besar) -->
     <div class="banner-penuh">
         <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
     </div>
 
-    <!-- 2. Kalimat Berjalan (Kanan ke Kiri, Kecepatan Sedang) -->
+    <!-- 2. Kalimat Berjalan (Kanan ke Kiri) -->
     <div class="running-text-container">
         <div class="running-text">
             Selamat Datang di <strong>INFOTRINK</strong> — Ekosistem Digital Terpadu sebagai Pusat Informasi, Dokumentasi, dan Pengelolaan Aktivitas Modern dalam Satu Ruang yang Terhubung dan Berkelanjutan <span class="pemisah">✦</span> Membangun Keterpaduan, Inovasi, dan Perkembangan Masa Depan.
@@ -178,8 +169,10 @@
 
     <!-- 3. Bagian Pengetahuan Tentang INFOTRINK -->
     <section class="konten-utama">
-        <h1 class="judul-bagian">PENGETAHUAN TENTANG INFOTRINK</h1>
-        <div class="garis-judul"></div>
+        <div class="header-judul">
+            <h1 class="judul-bagian">PENGETAHUAN TENTANG INFOTRINK</h1>
+            <div class="garis-judul"></div>
+        </div>
 
         <div class="isi-penjelasan">
             <p>
