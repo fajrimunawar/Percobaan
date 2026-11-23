@@ -5,52 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INFOTRINK - Ekosistem Digital Terpadu</title>
     <style>
-        /* Reset margin dan padding agar tidak ada celah putih di pinggir */
-        html, body {
+        /* Reset dasar dan pengaturan tinggi 1 layar penuh */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
             width: 100%;
-            overflow-x: hidden;
+            min-height: 100vh;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #ffffff;
             color: #1e293b;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
         }
 
-        /* 1. Bagian Banner Atas Penuh */
+        /* 1. Bagian Poster Atas (Mentok kiri-kanan & tinggi proporsional agar muat 1 layar) */
         .banner-penuh {
-            width: 100vw;
-            margin: 0;
-            padding: 0;
+            width: 100%;
+            background: linear-gradient(180deg, #e6f0fa 0%, #ffffff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             line-height: 0;
+            flex-shrink: 0;
         }
 
         .banner-penuh img {
             width: 100%;
-            height: auto;
+            max-height: 35vh; /* Ukuran agak dikecilkan agar seimbang & muat 1 layar penuh */
+            object-fit: cover; /* Memastikan gambar tetap mentok kiri-kanan tanpa celah putih */
+            object-position: center;
             display: block;
         }
 
-        /* 2. Wadah Teks Berjalan (Running Text) */
+        /* 2. Kalimat Berjalan (Dari Kanan ke Kiri) */
         .running-text-container {
             width: 100%;
             background: linear-gradient(90deg, #003366 0%, #0059b3 50%, #003366 100%);
             color: #ffffff;
-            padding: 14px 0;
+            padding: 11px 0;
             overflow: hidden;
             position: relative;
             border-bottom: 3px solid #00a8ff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+            flex-shrink: 0;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
         }
 
         .running-text {
             display: inline-block;
             white-space: nowrap;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            animation: jalanKiriKeKanan 28s linear infinite;
+            letter-spacing: 0.4px;
+            /* Bergerak mulus dari kanan ke kiri */
+            animation: jalanKananKeKiri 26s linear infinite;
         }
 
         .running-text-container:hover .running-text {
@@ -59,74 +73,77 @@
 
         .pemisah {
             color: #00d2ff;
-            margin: 0 25px;
+            margin: 0 24px;
             font-weight: bold;
         }
 
-        @keyframes jalanKiriKeKanan {
+        @keyframes jalanKananKeKiri {
             0% {
-                transform: translateX(-100%);
+                transform: translateX(100vw);
             }
             100% {
-                transform: translateX(100vw);
+                transform: translateX(-100%);
             }
         }
 
-        /* 3. Bagian Konten Utama (Full Width Kiri ke Kanan) */
+        /* 3. Bagian Konten Utama (Otomatis mengisi sisa ruang layar dengan pas) */
         .konten-utama {
+            flex: 1;
             width: 100%;
-            box-sizing: border-box;
-            padding: 45px 40px 60px 40px; /* Jarak nyaman dari tepi layar agar huruf tidak menempel mati ke batas layar */
+            padding: 24px 42px 28px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             background-color: #ffffff;
         }
 
-        /* Judul Utama */
         .judul-bagian {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             color: #003366;
             text-align: center;
-            letter-spacing: 1.5px;
-            margin-top: 0;
-            margin-bottom: 12px;
+            letter-spacing: 1.2px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
-        /* Garis aksen elegan di bawah judul */
         .garis-judul {
-            width: 90px;
-            height: 4px;
+            width: 80px;
+            height: 3.5px;
             background: linear-gradient(90deg, #0059b3, #00a8ff);
-            margin: 0 auto 32px auto;
+            margin: 0 auto 20px auto;
             border-radius: 2px;
         }
 
         /* Paragraf Penjelasan Sejajar Kiri-Kanan (Justify) */
         .isi-penjelasan p {
-            font-size: 16.5px;
-            line-height: 1.85;
+            font-size: 15px;
+            line-height: 1.68;
             color: #334155;
             text-align: justify;
             text-justify: inter-word;
-            margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
         .isi-penjelasan p:last-child {
             margin-bottom: 0;
         }
 
-        /* Penyesuaian otomatis untuk tampilan HP */
+        /* Penyesuaian responsif jika dibuka di layar HP kecil */
         @media (max-width: 768px) {
+            .banner-penuh img {
+                max-height: none;
+                height: auto;
+            }
             .konten-utama {
-                padding: 30px 20px 45px 20px;
+                padding: 22px 20px 30px 20px;
             }
             .judul-bagian {
-                font-size: 22px;
+                font-size: 20px;
             }
             .isi-penjelasan p {
-                font-size: 15.5px;
-                line-height: 1.75;
+                font-size: 14.5px;
+                line-height: 1.65;
             }
         }
     </style>
@@ -138,10 +155,10 @@
         <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
     </div>
 
-    <!-- 2. Kalimat Berjalan -->
+    <!-- 2. Kalimat Berjalan (Kanan ke Kiri) -->
     <div class="running-text-container">
         <div class="running-text">
-            Selamat Datang di <strong>INFOTRINK</strong> — Ekosistem Digital Terpadu yang Mengintegrasikan <strong>Digital Media</strong>, <strong>Pembangunan &amp; Pengembangan Entitas</strong>, serta <strong>Karya Ilmiah</strong> dalam Satu Ruang Informasi dan Dokumentasi Berkelanjutan <span class="pemisah">✦</span> Menghubungkan Inovasi, Jejaring, dan Pengetahuan.
+            Selamat Datang di <strong>INFOTRINK</strong> — Ekosistem Digital Terpadu sebagai Pusat Informasi, Dokumentasi, dan Pengelolaan Aktivitas Modern dalam Satu Ruang yang Terhubung dan Berkelanjutan <span class="pemisah">✦</span> Membangun Keterpaduan, Inovasi, dan Perkembangan Masa Depan.
         </div>
     </div>
 
@@ -152,13 +169,13 @@
 
         <div class="isi-penjelasan">
             <p>
-                <strong>INFOTRINK</strong> dibentuk sebagai sebuah ekosistem digital terpadu yang dirancang untuk menghimpun, menghubungkan, mengembangkan, dan mengelola berbagai aktivitas maupun entitas dalam satu platform berbasis website yang terstruktur. Hadir melampaui fungsi situs perusahaan konvensional, halaman portofolio pribadi, ataupun portal berita biasa, INFOTRINK berdiri sebagai ruang kolaborasi digital yang menyatukan tiga pilar utama: <strong>Digital Media</strong>, <strong>Pembangunan dan Pengembangan Entitas</strong>, serta <strong>Karya Ilmiah</strong>. Ketiga bidang strategis ini memiliki karakteristik dan fungsi masing-masing yang tetap terjaga kemandiriannya, namun saling terhubung untuk menciptakan lingkungan digital yang utuh dan saling melengkapi.
+                <strong>INFOTRINK</strong> merupakan sebuah ekosistem digital terpadu yang dirancang secara strategis sebagai wadah utama untuk menghimpun, menghubungkan, mengembangkan, dan mengelola berbagai aktivitas maupun entitas dalam satu kesatuan platform berbasis website. Kehadiran INFOTRINK melampaui batas situs informasi konvensional ataupun sekadar halaman profil biasa, melainkan dibangun sebagai ruang digital terstruktur yang menyatukan beragam inisiatif yang memiliki karakteristik dan peran tersendiri ke dalam satu lingkungan yang saling terhubung, selaras, dan saling menguatkan.
             </p>
             <p>
-                Pada pilar <strong>Digital Media</strong>, INFOTRINK memfasilitasi berbagai aktivitas komunikasi, interaksi, penyebaran informasi, dan perluasan jejaring antarpengguna melalui layanan media sosial serta platform komunikasi digital yang terorganisasi. Sementara itu, pada pilar <strong>Pembangunan dan Pengembangan Entitas</strong>, platform ini berperan sebagai pusat dokumentasi dan informasi bagi berbagai badan usaha, perusahaan, yayasan, lembaga, maupun organisasi nonperusahaan—mencakup rekam jejak pendirian, proses pembangunan, capaian progres, hingga agenda kegiatan yang sedang berlangsung maupun yang direncanakan. Melengkapi keduanya, pilar <strong>Karya Ilmiah</strong> hadir sebagai wadah arsip intelektual untuk menghimpun dan memublikasikan hasil penelitian, kajian akademis, analisis, serta berbagai pemikiran kritis agar dapat menjadi referensi pengetahuan yang kredibel dan bermanfaat luas.
+                Dalam arah pembentukannya, INFOTRINK berfokus menjadi pusat dokumentasi serta penyajian informasi yang akuntabel mengenai perjalanan pembangunan, proses pengelolaan, progres pertumbuhan, hingga berbagai pencapaian nyata yang telah diwujudkan maupun yang tengah direncanakan. Melalui tata kelola informasi yang rapi dan sistematis, setiap aktivitas dan perkembangan yang berada di dalam lingkup ekosistem ini dapat terarsip dengan baik, mudah ditelusuri, serta memberikan gambaran yang utuh dan kredibel bagi siapa saja yang mengaksesnya.
             </p>
             <p>
-                Melalui integrasi menyeluruh tersebut, arah pembentukan INFOTRINK berfokus menjadi pusat informasi sekaligus rekam jejak perkembangan yang akuntabel, berkelanjutan, dan terus bertumbuh. Setiap aktivitas media, perjalanan pembangunan entitas, serta kontribusi karya ilmiah disajikan dan didokumentasikan secara sistematis dalam satu atap digital. Dengan pendekatan ini, INFOTRINK tidak hanya menyajikan informasi statis, melainkan merepresentasikan sinergi nyata antara inovasi teknologi, tata kelola organisasi, dan pengembangan ilmu pengetahuan dalam satu ekosistem modern yang profesional.
+                Secara menyeluruh, INFOTRINK merepresentasikan komitmen terhadap keterpaduan, transparansi progres, dan kesinambungan inovasi dalam satu atap digital. Platform ini terus bertumbuh sebagai ruang kolaborasi dan pusat rujukan informasi yang adaptif terhadap perkembangan zaman, sehingga mampu menghadirkan nilai guna jangka panjang bagi seluruh ekosistem yang tergabung di dalamnya.
             </p>
         </div>
     </section>
