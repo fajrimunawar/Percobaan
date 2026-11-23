@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INFOTRINK - Digital Information & Knowledge Media</title>
     <style>
-        /* Reset margin dan padding bawaan browser agar menempel ke pojok layar */
         * {
             margin: 0;
             padding: 0;
@@ -13,38 +12,26 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-        }
-
-        /* Wadah khusus spanduk atas */
-        .header-banner {
-            width: 100%;
-            overflow: hidden;
             background-color: #ffffff;
-            line-height: 0; /* Menghilangkan celah kosong tipis di bawah gambar */
         }
 
-        /* Pengaturan gambar agar penuh kiri-kanan dan tidak terpotong */
-        .header-banner img {
-            width: 100%;        /* Memenuhi lebar layar dari pojok kiri ke kanan */
-            height: auto;       /* Tinggi otomatis menyesuaikan proporsi asli gambar */
-            display: block;     /* Memastikan gambar tampil utuh sebagai blok */
-            object-fit: contain;/* Menjamin tidak ada bagian gambar yang terpotong */
+        .spanduk-atas {
+            width: 100%;
+            line-height: 0;
+        }
+
+        .spanduk-atas img {
+            width: 100%;      /* Membentang penuh dari pojok kiri ke pojok kanan layar */
+            height: auto;     /* Tinggi menyesuaikan otomatis mengikuti rasio asli gambar */
+            display: block;   /* Memastikan gambar tampil utuh tanpa terpotong */
         }
     </style>
 </head>
 <body>
 
-    <!-- Bagian Spanduk Atas -->
-    <header class="header-banner">
-        <img src="banner-infotrink.png" alt="Spanduk INFOTRINK - Digital Information & Knowledge Media">
+    <header class="spanduk-atas">
+        <img src="file_00000000c808821199b244f777bdb40f.png" alt="Spanduk INFOTRINK">
     </header>
-
-    <!-- Area Konten Selanjutnya (Akan kita isi di tahap berikutnya) -->
-    <main>
-        
-    </main>
 
 </body>
 </html>
