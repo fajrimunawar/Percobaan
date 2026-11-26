@@ -46,14 +46,10 @@ html, body {
 .marquee-track {
     display: inline-block;
     will-change: transform;
-    /* 
-       Durasi 30s: Waktu yang pas untuk teks yang cukup panjang. 
-       Tidak terlalu cepat, tidak terlalu lambat. Terkesan profesional.
-    */
     animation: marquee-scroll 30s linear infinite;
 }
 
-/* ISI TEKS */
+/* ISI TEKS BERJALAN */
 .marquee-item {
     display: inline-flex;
     align-items: center;
@@ -81,10 +77,6 @@ html, body {
     font-size: 12px;
 }
 
-/* 
-   Animasi: Mulai dari luar layar kanan (100vw), 
-   berjalan mulus ke kiri sampai hilang (-100%).
-*/
 @keyframes marquee-scroll {
     0% {
         transform: translateX(100vw);
@@ -92,6 +84,38 @@ html, body {
     100% {
         transform: translateX(-100%);
     }
+}
+
+/* =========================================
+   BAGIAN PENGENALAN TENTANG INFOTRINK
+   ========================================= */
+.intro-section {
+    width: 100%;
+    padding: 50px 40px 70px 40px; /* Atas, Kanan, Bawah, Kiri */
+    background: #ffffff;
+}
+
+/* JUDUL */
+.intro-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px; /* Ukuran besar */
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #111111;
+    text-align: left; /* Pojok kiri */
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+/* PARAGRAF */
+.intro-paragraph {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333333;
+    text-align: justify; /* Rata kanan-kiri */
+    text-justify: inter-word; /* Membuat spasi antar kata rata */
+    width: 100%; /* Dari ujung kiri sampai ujung kanan */
 }
 
 /* RESPONSIVE */
@@ -109,9 +133,23 @@ html, body {
         margin: 0 17px;
     }
     
-    /* Di HP, karena layar lebih sempit, durasi disesuaikan agar tidak terlalu cepat */
     .marquee-track {
         animation-duration: 22s; 
+    }
+
+    /* Penyesuaian untuk HP */
+    .intro-section {
+        padding: 30px 20px 50px 20px;
+    }
+
+    .intro-title {
+        font-size: 24px; /* Sedikit lebih kecil di HP */
+        margin-bottom: 20px;
+    }
+
+    .intro-paragraph {
+        font-size: 14px;
+        line-height: 1.7;
     }
 }
 
@@ -136,16 +174,21 @@ html, body {
 <!-- TEKS BERJALAN -->
 <section class="marquee">
     <div class="marquee-track">
-
-        <!-- Kalimat diperpanjang & dibuat lebih profesional -->
         <div class="marquee-item">
             <span class="brand">INFOTRINK</span>
             <span class="divider">|</span>
             <span>Pusat Media Digital Terpercaya yang Menghimpun, Mengemas, dan Menyajikan Informasi serta Perkembangan Terkini dari Beragam Aspek Kehidupan dalam Satu Wadah Terpadu, Akurat, dan Berkelas</span>
             <span class="divider">◆</span>
         </div>
-
     </div>
+</section>
+
+<!-- PENGENALAN TENTANG INFOTRINK -->
+<section class="intro-section">
+    <h2 class="intro-title">PENGENALAN TENTANG INFOTRINK</h2>
+    <p class="intro-paragraph">
+        INFOTRINK merupakan sebuah wadah media digital yang dibentuk sebagai sarana penghimpunan, pengembangan, dan penyajian informasi serta berbagai bentuk perkembangan dalam satu kesatuan platform. INFOTRINK hadir dengan konsep yang terbuka dan terintegrasi untuk menaungi beragam bentuk informasi dan perkembangan yang dapat disajikan melalui media digital. Keberadaannya tidak dibatasi pada satu bentuk penyajian atau satu bidang tertentu, melainkan memberikan ruang bagi berbagai bentuk informasi untuk dihimpun, dikembangkan, dan disampaikan secara terstruktur dalam satu lingkungan digital yang saling terhubung. Melalui konsep tersebut, INFOTRINK dikembangkan sebagai platform yang memiliki arah, identitas, dan pengelolaan tersendiri dalam mendukung penyebaran informasi serta perkembangan berbagai hal melalui pemanfaatan teknologi digital.
+    </p>
 </section>
 
 </body>
