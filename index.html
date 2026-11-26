@@ -17,15 +17,13 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            background-color: #060d1c;
+            background-color: #050a14;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* Gambar mentok di atas dan utuh tanpa terpotong */
-        .banner-area {
+        .image-box {
             width: 100%;
-            flex: 1;
+            flex: 1 1 auto;
             min-height: 0;
             background-color: #ffffff;
             display: flex;
@@ -33,60 +31,59 @@
             align-items: flex-start;
         }
 
-        .top-banner {
+        .image-box img {
             width: 100%;
             height: 100%;
-            max-width: 100vw;
             object-fit: contain;
             object-position: top center;
             display: block;
         }
 
-        /* Area kalimat berjalan minimalis dengan efek pudar di kiri-kanan */
-        .running-text-wrapper {
+        .text-runner {
             width: 100%;
-            padding: 18px 0;
-            background: linear-gradient(180deg, #0b1933 0%, #050a14 100%);
+            flex: 0 0 auto;
+            padding: 16px 0;
+            background-color: #050a14;
             border-top: 1px solid rgba(56, 189, 248, 0.25);
             overflow: hidden;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000000 8%, #000000 92%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, #000000 8%, #000000 92%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000000 7%, #000000 93%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000000 7%, #000000 93%, transparent 100%);
         }
 
-        .running-track {
+        .runner-track {
             display: flex;
             width: max-content;
-            animation: moveLeft 38s linear infinite;
+            animation: slideLeft 36s linear infinite;
         }
 
-        .running-group {
+        .runner-group {
             display: flex;
             align-items: center;
             white-space: nowrap;
         }
 
-        .running-sentence {
-            color: #f1f5f9;
-            font-size: clamp(14px, 1.8vw, 17px);
+        .runner-item {
+            color: #f8fafc;
+            font-size: clamp(14px, 1.7vw, 17px);
             font-weight: 400;
-            letter-spacing: 0.7px;
-            padding: 0 28px;
+            letter-spacing: 0.6px;
+            padding: 0 26px;
         }
 
-        .running-sentence strong {
+        .runner-item strong {
             color: #38bdf8;
             font-weight: 600;
         }
 
-        .dot-divider {
+        .runner-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
             background-color: #38bdf8;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
-        @keyframes moveLeft {
+        @keyframes slideLeft {
             0% {
                 transform: translate3d(0, 0, 0);
             }
@@ -98,27 +95,27 @@
 </head>
 <body>
 
-    <div class="banner-area">
-        <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK" class="top-banner">
+    <div class="image-box">
+        <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK">
     </div>
 
-    <div class="running-text-wrapper">
-        <div class="running-track">
-            <div class="running-group">
-                <span class="running-sentence"><strong>INFOTRINK Digital</strong> — Ekosistem Informasi &amp; Media Pengetahuan Terkurasi Berstandar Profesional</span>
-                <span class="dot-divider"></span>
-                <span class="running-sentence">Menghadirkan Wawasan Strategis, Analisis Tajam, dan Kualitas Informasi Berkelas</span>
-                <span class="dot-divider"></span>
-                <span class="running-sentence"><strong>INFOTRINK</strong> — Presisi Data, Keunggulan Perspektif, dan Inovasi Pengetahuan Masa Depan</span>
-                <span class="dot-divider"></span>
+    <div class="text-runner">
+        <div class="runner-track">
+            <div class="runner-group">
+                <span class="runner-item"><strong>INFOTRINK Digital</strong> — Ekosistem Informasi &amp; Media Pengetahuan Terkurasi Berstandar Profesional</span>
+                <span class="runner-dot"></span>
+                <span class="runner-item">Menghadirkan Wawasan Strategis, Analisis Tajam, dan Kualitas Informasi Berkelas</span>
+                <span class="runner-dot"></span>
+                <span class="runner-item"><strong>INFOTRINK</strong> — Presisi Data, Keunggulan Perspektif, dan Inovasi Pengetahuan Masa Depan</span>
+                <span class="runner-dot"></span>
             </div>
-            <div class="running-group" aria-hidden="true">
-                <span class="running-sentence"><strong>INFOTRINK Digital</strong> — Ekosistem Informasi &amp; Media Pengetahuan Terkurasi Berstandar Profesional</span>
-                <span class="dot-divider"></span>
-                <span class="running-sentence">Menghadirkan Wawasan Strategis, Analisis Tajam, dan Kualitas Informasi Berkelas</span>
-                <span class="dot-divider"></span>
-                <span class="running-sentence"><strong>INFOTRINK</strong> — Presisi Data, Keunggulan Perspektif, dan Inovasi Pengetahuan Masa Depan</span>
-                <span class="dot-divider"></span>
+            <div class="runner-group" aria-hidden="true">
+                <span class="runner-item"><strong>INFOTRINK Digital</strong> — Ekosistem Informasi &amp; Media Pengetahuan Terkurasi Berstandar Profesional</span>
+                <span class="runner-dot"></span>
+                <span class="runner-item">Menghadirkan Wawasan Strategis, Analisis Tajam, dan Kualitas Informasi Berkelas</span>
+                <span class="runner-dot"></span>
+                <span class="runner-item"><strong>INFOTRINK</strong> — Presisi Data, Keunggulan Perspektif, dan Inovasi Pengetahuan Masa Depan</span>
+                <span class="runner-dot"></span>
             </div>
         </div>
     </div>
