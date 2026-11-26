@@ -3,77 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Infotrink</title>
+<title>Infotrink - Digital Information</title>
 
 <style>
+/* =========================================
+   RESET & DASAR
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-    background: #f4f6f9; /* Background abu-abu elegan */
-    font-family: Arial, Helvetica, sans-serif;
+html {
+    scroll-behavior: smooth;
 }
 
-/* 
-   KUNCI: Membuat halaman muat dalam 1 layar (tanpa scroll atas-bawah)
-   Menggunakan flexbox agar pembagian ruangnya otomatis rapi.
-*/
-.page-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 20px;
-    gap: 18px; /* Jarak antar blok */
+body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    background-color: #f7f9fc; /* Background abu-abu sangat muda yang bersih */
+    color: #333333;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Container utama agar konten di tengah dan rapi */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* =========================================
-   BAGIAN GAMBAR (Diperkecil & diberi gaya Card)
+   BAGIAN 1: HEADER / GAMBAR BANNER
    ========================================= */
-.website-image {
+.hero-section {
     width: 100%;
-    max-width: 1000px; /* Dibatasi agar tidak terlalu lebar */
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Shadow halus */
-    border: 1px solid #e0e0e0;
-    flex-shrink: 0; /* Mencegah gambar mengecil berlebihan */
+    padding: 30px 0 10px 0;
+    text-align: center;
 }
 
-.website-image img {
+.hero-banner {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Efek bayangan elegan */
+}
+
+.hero-banner img {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 25vh; /* Tinggi gambar maksimal 25% dari layar */
     object-fit: cover;
-    object-position: center;
 }
 
 /* =========================================
-   BAGIAN TEKS BERJALAN
+   BAGIAN 2: TEKS BERJALAN (MARQUEE)
    ========================================= */
-.marquee {
-    width: 100%;
+.marquee-wrapper {
+    background: #ffffff;
+    border-top: 1px solid #e1e8ed;
+    border-bottom: 1px solid #e1e8ed;
+    padding: 16px 0;
+    margin-top: 20px;
     overflow: hidden;
     white-space: nowrap;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 14px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    border: 1px solid #eaeaea;
-    flex-shrink: 0;
 }
 
 .marquee-track {
     display: inline-block;
-    will-change: transform;
-    animation: marquee-scroll 45s linear infinite; /* Super panjang, jadi lebih lama */
+    animation: berjalan 50s linear infinite; /* 50 detik agar super pelan dan elegan */
 }
 
 .marquee-item {
@@ -82,191 +84,239 @@ html, body {
     padding-right: 50px;
 }
 
-/* Variasi Gaya Teks di Marquee */
-.marquee-item .brand {
+/* Variasi gaya font di teks berjalan */
+.text-brand {
     font-weight: 800;
-    letter-spacing: 3px;
     color: #004aad;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.text-normal {
+    font-weight: 500;
+    color: #2c3e50;
+    letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 14px;
 }
 
-.marquee-item .text-normal {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #292929;
-    text-transform: uppercase;
-}
-
-.marquee-item .text-italic {
+.text-italic {
     font-style: italic;
-    font-weight: 400;
-    color: #666666;
+    color: #7f8c8d;
+    font-size: 14px;
     letter-spacing: 0.5px;
-    font-size: 13px;
 }
 
-.marquee-item .divider {
-    margin: 0 22px;
-    color: #c0c0c0;
-    font-size: 12px;
+.separator {
+    margin: 0 25px;
+    color: #bdc3c7;
     font-weight: 300;
 }
 
-@keyframes marquee-scroll {
+@keyframes berjalan {
     0% { transform: translateX(100vw); }
     100% { transform: translateX(-100%); }
 }
 
 /* =========================================
-   BAGIAN PENGENALAN (Desain Card Baru)
+   BAGIAN 3: KONTEN UTAMA (PENJELASAN)
    ========================================= */
-.intro-section {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    background: #ffffff;
-    padding: 30px 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid #eaeaea;
-    flex-grow: 1; /* Mengisi sisa ruang yang tersedia */
-    overflow-y: auto; /* Antisipasi jika teks sangat panjang di layar kecil */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.main-content {
+    padding: 50px 0;
 }
 
-/* Container Judul dengan Garis Aksen */
-.intro-header {
+.content-card {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid #eef2f5;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a252f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
-    margin-bottom: 18px;
 }
 
-/* Garis vertikal biru sebagai aksen pengganti icon/angka */
-.intro-header::before {
+/* Garis aksen biru di kiri judul (Pengganti icon/angka) */
+.section-title::before {
     content: "";
-    display: block;
-    width: 4px;
-    height: 24px;
-    background: #004aad;
-    border-radius: 2px;
-    margin-right: 12px;
+    display: inline-block;
+    width: 6px;
+    height: 28px;
+    background-color: #004aad;
+    margin-right: 15px;
+    border-radius: 3px;
 }
 
-.intro-title {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    color: #111111;
-    text-transform: uppercase;
-}
-
-.intro-paragraph {
-    font-size: 14.5px;
-    line-height: 1.85;
-    color: #444444;
+.paragraph-text {
+    font-size: 16px;
+    line-height: 1.9;
     text-align: justify;
     text-justify: inter-word;
+    color: #4a5568;
+    margin-bottom: 20px;
 }
 
 /* =========================================
-   RESPONSIVE (Untuk HP & Tablet)
+   BENTUKAN DESAIN LAIN: VISI & MISI (GRID)
+   ========================================= */
+.visi-misi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.vm-box {
+    background: #f8fafc;
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 5px solid #004aad; /* Aksen garis tebal di kiri box */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vm-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.vm-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a252f;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vm-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4a5568;
+    text-align: justify;
+}
+
+/* =========================================
+   RESPONSIVE (Tampilan di HP)
    ========================================= */
 @media (max-width: 768px) {
-    .page-wrapper {
-        padding: 15px;
-        gap: 15px;
-        min-height: 100vh;
-        /* Di HP, izinkan scroll jika kontennya sangat panjang */
-        height: auto; 
+    .hero-section {
+        padding: 15px 0;
     }
-
-    .website-image img {
-        max-height: 20vh;
+    
+    .hero-banner {
+        border-radius: 0; /* Di HP full width lebih bagus */
     }
 
     .marquee-track {
-        animation-duration: 30s;
+        animation-duration: 30s; /* Lebih cepat di HP karena layar kecil */
     }
 
-    .marquee-item .brand { font-size: 12px; }
-    .marquee-item .text-normal { font-size: 11px; }
-    .marquee-item .text-italic { font-size: 11px; }
+    .text-normal, .text-italic { font-size: 12px; }
+    .text-brand { font-size: 14px; }
 
-    .intro-section {
-        padding: 20px 20px;
+    .main-content {
+        padding: 30px 0;
+    }
+
+    .content-card {
+        padding: 30px 20px;
         border-radius: 12px;
     }
 
-    .intro-header::before {
-        height: 18px;
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .section-title::before {
+        height: 22px;
+        width: 5px;
+        margin-right: 10px;
     }
 
-    .intro-title {
-        font-size: 16px;
-        letter-spacing: 1px;
+    .paragraph-text {
+        font-size: 15px;
+        line-height: 1.8;
     }
 
-    .intro-paragraph {
-        font-size: 13px;
-        line-height: 1.7;
+    /* Grid jadi 1 kolom di HP */
+    .visi-misi-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .vm-box {
+        padding: 25px 20px;
     }
 }
 </style>
 </head>
-
 <body>
 
-<!-- WRAPPER UTAMA (Agar muat 1 layar) -->
-<div class="page-wrapper">
-
-    <!-- GAMBAR UTAMA (Diperkecil & Card Style) -->
-    <main class="website-image">
-        <img
-            src="file_0000000005b0821198b8019f43a73116.webp"
-            alt="Infotrink Banner"
-        >
-    </main>
-
-    <!-- TEKS BERJALAN (Super Panjang & Variatif) -->
-    <section class="marquee">
-        <div class="marquee-track">
-            <div class="marquee-item">
-                <!-- Bagian 1 -->
-                <span class="brand">INFOTRINK</span>
-                <span class="divider">/</span>
-                <span class="text-normal">Pusat Media Digital Terpercaya yang Menghimpun, Mengemas, dan Menyajikan Informasi serta Perkembangan Terkini</span>
-                <span class="divider">/</span>
-                
-                <!-- Bagian 2 -->
-                <span class="text-italic">Menyajikan berita secara mendalam, akurat, dan berimbang untuk membangun wawasan yang lebih luas</span>
-                <span class="divider">/</span>
-
-                <!-- Bagian 3 -->
-                <span class="text-normal">Menjadi wadah terpadu bagi berbagai aspek kehidupan dalam satu lingkungan digital yang terintegrasi, profesional, dan berkelas</span>
-                <span class="divider">/</span>
-
-                <!-- Bagian 4 -->
-                <span class="text-italic">Berdedikasi menyajikan informasi berkualitas melalui pemanfaatan teknologi digital yang inovatif dan terpercaya</span>
-                <span class="divider">/</span>
+    <!-- 1. BAGIAN GAMBAR BANNER -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="hero-banner">
+                <img src="file_0000000005b0821198b8019f43a73116.webp" alt="Infotrink Banner">
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- PENGENALAN TENTANG INFOTRINK (Desain Baru) -->
-    <section class="intro-section">
-        <div class="intro-header">
-            <h2 class="intro-title">Pengenalan Tentang Infotrink</h2>
+    <!-- 2. BAGIAN TEKS BERJALAN -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track">
+            <div class="marquee-item">
+                <span class="text-brand">INFOTRINK</span>
+                <span class="separator">/</span>
+                <span class="text-normal">Pusat Media Digital Terpercaya yang Menghimpun, Mengemas, dan Menyajikan Informasi Serta Perkembangan Terkini</span>
+                <span class="separator">/</span>
+                <span class="text-italic">Menyajikan berita secara mendalam, akurat, dan berimbang untuk membangun wawasan yang lebih luas</span>
+                <span class="separator">/</span>
+                <span class="text-normal">Menjadi wadah terpadu bagi berbagai aspek kehidupan dalam satu lingkungan digital yang terintegrasi, profesional, dan berkelas</span>
+                <span class="separator">/</span>
+                <span class="text-italic">Berdedikasi menyajikan informasi berkualitas melalui pemanfaatan teknologi digital yang inovatif dan terpercaya</span>
+                <span class="separator">/</span>
+            </div>
         </div>
-        <p class="intro-paragraph">
-            INFOTRINK merupakan sebuah wadah media digital yang dibentuk sebagai sarana penghimpunan, pengembangan, dan penyajian informasi serta berbagai bentuk perkembangan dalam satu kesatuan platform. INFOTRINK hadir dengan konsep yang terbuka dan terintegrasi untuk menaungi beragam bentuk informasi dan perkembangan yang dapat disajikan melalui media digital. Keberadaannya tidak dibatasi pada satu bentuk penyajian atau satu bidang tertentu, melainkan memberikan ruang bagi berbagai bentuk informasi untuk dihimpun, dikembangkan, dan disampaikan secara terstruktur dalam satu lingkungan digital yang saling terhubung. Melalui konsep tersebut, INFOTRINK dikembangkan sebagai platform yang memiliki arah, identitas, dan pengelolaan tersendiri dalam mendukung penyebaran informasi serta perkembangan berbagai hal melalui pemanfaatan teknologi digital.
-        </p>
-    </section>
+    </div>
 
-</div>
+    <!-- 3. BAGIAN KONTEN UTAMA -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-card">
+                
+                <h2 class="section-title">Pengenalan Tentang Infotrink</h2>
+                
+                <p class="paragraph-text">
+                    INFOTRINK merupakan sebuah wadah media digital yang dibentuk sebagai sarana penghimpunan, pengembangan, dan penyajian informasi serta berbagai bentuk perkembangan dalam satu kesatuan platform. INFOTRINK hadir dengan konsep yang terbuka dan terintegrasi untuk menaungi beragam bentuk informasi dan perkembangan yang dapat disajikan melalui media digital.
+                </p>
+                <p class="paragraph-text">
+                    Keberadaannya tidak dibatasi pada satu bentuk penyajian atau satu bidang tertentu, melainkan memberikan ruang bagi berbagai bentuk informasi untuk dihimpun, dikembangkan, dan disampaikan secara terstruktur dalam satu lingkungan digital yang saling terhubung. Melalui konsep tersebut, INFOTRINK dikembangkan sebagai platform yang memiliki arah, identitas, dan pengelolaan tersendiri dalam mendukung penyebaran informasi serta perkembangan berbagai hal melalui pemanfaatan teknologi digital.
+                </p>
+
+                <!-- BENTUKAN DESAIN LAIN (VISI & MISI) -->
+                <div class="visi-misi-grid">
+                    <div class="vm-box">
+                        <h3 class="vm-title">Arah & Identitas</h3>
+                        <p class="vm-text">Menjadi platform digital yang memiliki identitas kuat, arah yang jelas, serta pengelolaan tersendiri dalam mendukung penyebaran informasi yang terstruktur dan terpercaya bagi masyarakat luas.</p>
+                    </div>
+                    <div class="vm-box">
+                        <h3 class="vm-title">Integrasi & Terbuka</h3>
+                        <p class="vm-text">Menaungi beragam bentuk informasi tanpa batasan bidang tertentu, menghadirkan ruang yang terbuka dan saling terhubung untuk mengakomodasi berbagai perkembangan melalui teknologi digital.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
 
 </body>
 </html>
