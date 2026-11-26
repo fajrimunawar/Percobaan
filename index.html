@@ -15,20 +15,27 @@
             width: 100%;
             height: 100dvh;
             overflow: hidden;
-            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Latar belakang senada dengan nuansa biru-putih gambar agar menyatu elegan */
+            background: radial-gradient(circle at center, #ffffff 45%, #dbeafe 85%, #1e40af 100%);
         }
 
-        .fullscreen-bg {
+        .responsive-banner {
             width: 100%;
             height: 100%;
-            background-image: url('file_0000000005b0821198b8019f43a73116.webp');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
+            max-width: 100vw;
+            max-height: 100dvh;
+            /* Memastikan gambar tampil 100% utuh sesuai ukuran layar tanpa terpotong */
+            object-fit: contain;
+            display: block;
+            /* Memberi efek kedalaman halus agar terlihat menyatu dengan latar */
+            filter: drop-shadow(0 12px 28px rgba(15, 23, 42, 0.18));
         }
     </style>
 </head>
 <body>
-    <div class="fullscreen-bg"></div>
+    <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK" class="responsive-banner">
 </body>
 </html>
