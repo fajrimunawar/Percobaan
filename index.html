@@ -40,28 +40,24 @@ html, body {
     background: #ffffff;
     border-bottom: 1px solid #e8e8e8;
     padding: 19px 0;
-    /* Memastikan teks benar-benar mulai dari luar layar kanan */
-    position: relative; 
 }
 
-/* ANIMASI BERULANG */
+/* ANIMASI BERULANG - KUNCI PERUBAHAN DI SINI */
 .marquee-track {
-    display: flex;
-    width: max-content;
+    display: inline-block; /* Ubah ke inline-block agar lebarnya mengikuti teks */
     will-change: transform;
     /* 
-       Menggunakan 40s agar kecepatannya pas. 
-       Karena teksnya kita perbanyak, waktunya perlu ditambah.
+       100vw artinya teks mulai dari luar layar sebelah kanan.
+       -100% artinya teks berjalan sampai habis ke kiri luar layar.
     */
-    animation: marquee-scroll 40s linear infinite;
+    animation: marquee-scroll 20s linear infinite;
 }
 
 /* ISI TEKS */
 .marquee-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    flex-shrink: 0;
-    padding-right: 60px; /* Jarak antar kalimat */
+    padding-right: 60px;
 }
 
 .marquee-item span {
@@ -86,16 +82,15 @@ html, body {
 }
 
 /* 
-   KUNCI PERUBAHAN: 
-   Kita mulai dari 100% (layar kanan) dan berakhir di -100% (layar kiri).
-   Karena ada 4 blok teks, -100% akan membuat teks ke-3 dan ke-4 menggantikan posisi 1 dan 2.
+   Animasi: Mulai dari 100vw (ujung kanan layar), 
+   berjalan ke kiri melewati layar sampai hilang (-100%).
 */
 @keyframes marquee-scroll {
-    from {
-        transform: translateX(0);
+    0% {
+        transform: translateX(100vw);
     }
-    to {
-        transform: translateX(-50%);
+    100% {
+        transform: translateX(-100%);
     }
 }
 
@@ -114,9 +109,9 @@ html, body {
         margin: 0 17px;
     }
     
-    /* Di HP, kalau terlalu lama bisa dipercepat sedikit */
+    /* Di HP, waktunya disesuaikan agar tidak terlalu cepat */
     .marquee-track {
-        animation-duration: 25s; 
+        animation-duration: 15s; 
     }
 }
 
@@ -142,32 +137,8 @@ html, body {
 <section class="marquee">
     <div class="marquee-track">
 
-        <!-- BLOK 1 -->
+        <!-- Hanya butuh SATU blok teks dengan desain ini -->
         <div class="marquee-item">
-            <span class="brand">INFOTRINK</span>
-            <span class="divider">|</span>
-            <span>Media Digital yang Menghimpun Informasi dan Perkembangan dalam Beragam Bentuk melalui Satu Wadah Terpadu</span>
-            <span class="divider">◆</span>
-        </div>
-
-        <!-- BLOK 2 -->
-        <div class="marquee-item" aria-hidden="true">
-            <span class="brand">INFOTRINK</span>
-            <span class="divider">|</span>
-            <span>Media Digital yang Menghimpun Informasi dan Perkembangan dalam Beragam Bentuk melalui Satu Wadah Terpadu</span>
-            <span class="divider">◆</span>
-        </div>
-
-        <!-- BLOK 3 (Tambahan agar layar lebar tidak kosong) -->
-        <div class="marquee-item" aria-hidden="true">
-            <span class="brand">INFOTRINK</span>
-            <span class="divider">|</span>
-            <span>Media Digital yang Menghimpun Informasi dan Perkembangan dalam Beragam Bentuk melalui Satu Wadah Terpadu</span>
-            <span class="divider">◆</span>
-        </div>
-
-        <!-- BLOK 4 (Tambahan) -->
-        <div class="marquee-item" aria-hidden="true">
             <span class="brand">INFOTRINK</span>
             <span class="divider">|</span>
             <span>Media Digital yang Menghimpun Informasi dan Perkembangan dalam Beragam Bentuk melalui Satu Wadah Terpadu</span>
