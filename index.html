@@ -14,8 +14,8 @@
 
 html, body {
     width: 100%;
-    height: 100vh; /* Mengunci tinggi layar pas 100% */
-    overflow: hidden; /* MENGHILANGKAN SCROLLBAR TOTAL */
+    height: 100vh;
+    overflow: hidden; /* Kunci mati: Tidak ada scroll atas bawah */
     background: #f4f7f6;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
     display: flex;
@@ -23,25 +23,28 @@ html, body {
 }
 
 /* =========================================
-   1. BANNER ATAS (PENUH, TIDAK GEPENG)
+   1. BANNER ATAS (TIDAK GEPENG, TIDAK KEPOTONG)
    ========================================= */
 .website-image {
     width: 100%;
-    height: 25vh; /* Tinggi 25% dari layar, pas dan tidak mendorong konten lain */
+    height: 30vh; /* Ukuran pas: 30% dari tinggi layar */
     flex-shrink: 0;
+    background-color: #ffffff;
+    
+    /* TRIK PROFESIONAL: Menggunakan background agar tidak gepeng */
+    background-image: url('file_0000000005b0821198b8019f43a73116.webp');
+    background-size: cover; /* Memenuhi layar tanpa merusak proporsi */
+    background-position: center; /* Fokus di tengah */
+    background-repeat: no-repeat;
 }
 
+/* Sembunyikan tag img asli karena sudah diganti background */
 .website-image img {
-    display: block;
-    width: 100%; 
-    height: 100%; 
-    /* 'cover' = memenuhi layar tanpa gepeng, ujung gambar sedikit terpotong rapi */
-    object-fit: cover; 
-    object-position: center;
+    display: none; 
 }
 
 /* =========================================
-   2. TEKS BERJALAN (RAPAT DI BAWAH BANNER)
+   2. TEKS BERJALAN (MARQUEE)
    ========================================= */
 .marquee {
     width: 100%;
@@ -49,7 +52,7 @@ html, body {
     white-space: nowrap;
     background: #ffffff;
     border-bottom: 1px solid #e8e8e8;
-    padding: 10px 0; 
+    padding: 12px 0; 
     flex-shrink: 0;
 }
 
@@ -65,7 +68,7 @@ html, body {
 }
 
 .marquee-item span {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 1.5px;
     color: #292929;
@@ -88,15 +91,15 @@ html, body {
 }
 
 /* =========================================
-   3. AREA 3 KOTAK (BESAR & MENGISI SISA LAYAR)
+   3. AREA 3 KOTAK (PAS & RAPI)
    ========================================= */
 .info-cards-section {
     width: 100%;
-    flex: 1; /* Mengisi seluruh sisa ruang antara banner dan footer */
-    padding: 20px 30px;
+    flex: 1; /* Mengisi seluruh sisa ruang di tengah */
+    padding: 25px 30px;
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Kotak memanjang ke bawah mengikuti sisa layar */
+    align-items: stretch; 
     gap: 30px; 
 }
 
@@ -104,11 +107,14 @@ html, body {
     background: #ffffff;
     border-radius: 12px; 
     overflow: hidden;
-    flex: 1; /* Membagi rata 3 kotak di sisa layar */
-    display: flex;
-    flex-direction: column;
+    flex: 1; 
+    /* Batasi lebar maksimal agar tidak terlalu melar di layar ultrawide */
+    max-width: 400px; 
+    
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
     border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease;
 }
 
@@ -118,7 +124,7 @@ html, body {
 
 .card-image {
     width: 100%;
-    flex: 1; /* Gambar mengisi sisa ruang paling besar di dalam kotak */
+    flex: 1; 
     overflow: hidden;
     background: #e9ecef;
 }
@@ -126,10 +132,10 @@ html, body {
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Gambar kotak tidak gepeng, potong rapi */
+    object-fit: cover; 
 }
 
-/* Area Judul di Bawah Kotak */
+/* Area Judul */
 .card-title-wrapper {
     padding: 20px 15px;
     text-align: center;
@@ -164,11 +170,11 @@ html, body {
    ========================================= */
 .copyright-footer {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     background: #111111; 
     color: #ffffff;
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.5px;
     flex-shrink: 0;
 }
@@ -184,10 +190,12 @@ html, body {
 @media (max-width: 900px) {
     html, body {
         height: auto;
-        overflow-y: auto; /* Di HP, izinkan scroll karena layar sempit */
+        overflow-y: auto; 
     }
     .website-image {
         height: 200px; 
+        background-size: contain; /* Di HP, tampilkan gambar utuh */
+        background-color: #000;
     }
     .info-cards-section {
         flex-direction: column; 
@@ -195,6 +203,7 @@ html, body {
         height: auto;
     }
     .card {
+        max-width: 100%;
         min-height: 350px;
     }
 }
@@ -205,6 +214,7 @@ html, body {
 
 <!-- 1. BANNER ATAS -->
 <main class="website-image">
+    <!-- Tag img disembunyikan, diganti background CSS -->
     <img src="file_0000000005b0821198b8019f43a73116.webp" alt="Infotrink Banner">
 </main>
 
