@@ -6,6 +6,7 @@
 <title>Infotrink</title>
 
 <style>
+/* Mencegah scrollbar dan memastikan pas 1 layar */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +15,7 @@
 
 html, body {
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Tinggi pas 1 layar */
     overflow: hidden; /* Menghilangkan scroll */
     background: #ffffff;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
@@ -23,26 +24,25 @@ html, body {
 }
 
 /* =========================================
-   BANNER ATAS (DIPERBAIKI AGAR TIDAK GEPENG)
+   BANNER ATAS (RAPI, TIDAK GEPENG, TIDAK KEPOTONG)
    ========================================= */
 .website-image {
     width: 100%;
-    height: 30vh; /* Tinggi banner proporsional */
-    min-height: 180px;
+    height: 28vh; /* Tinggi 28% dari layar */
     flex-shrink: 0;
 }
 
 .website-image img {
+    display: block;
     width: 100%; 
     height: 100%; 
-    /* KUNCI UTAMA: 'cover' agar tidak gepeng, memotong pinggir secara rapi */
-    object-fit: cover; 
-    object-position: center; /* Fokus ke tengah gambar */
-    display: block;
+    /* Menggunakan 'fill' agar gambar TIDAK KEPOTONG, 
+       tapi tingginya dibatasi 28vh agar tidak terlalu melar */
+    object-fit: fill; 
 }
 
 /* =========================================
-   TEKS BERJALAN
+   TEKS BERJALAN (JARAK DIRAPATKAN)
    ========================================= */
 .marquee {
     width: 100%;
@@ -50,7 +50,9 @@ html, body {
     white-space: nowrap;
     background: #ffffff;
     border-bottom: 1px solid #e8e8e8;
-    padding: 12px 0; 
+    border-top: 1px solid #e8e8e8;
+    /* Jarak atas bawah dibuat tipis agar dekat dengan banner dan kotak */
+    padding: 10px 0; 
     flex-shrink: 0;
 }
 
@@ -67,7 +69,7 @@ html, body {
 
 .marquee-item span {
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 1.5px;
     color: #292929;
     text-transform: uppercase;
@@ -75,7 +77,6 @@ html, body {
 
 .marquee-item .brand {
     font-weight: 800;
-    letter-spacing: 3px;
     color: #111111;
 }
 
@@ -90,12 +91,12 @@ html, body {
 }
 
 /* =========================================
-   AREA 3 KOTAK (UKURAN PAS & PROPORSIONAL)
+   AREA 3 KOTAK (UKURAN PAS & GAGAH)
    ========================================= */
 .info-cards-section {
     width: 100%;
-    flex: 1; /* Mengisi sisa layar */
-    padding: 40px;
+    flex: 1; /* Mengisi sisa ruang kosong di tengah */
+    padding: 30px 40px;
     background: #f4f7f6; 
     display: flex;
     justify-content: center;
@@ -103,17 +104,16 @@ html, body {
     gap: 30px; /* Jarak antar kotak */
 }
 
-/* UKURAN KOTAK YANG PAS */
 .card {
     background: #ffffff;
     border-radius: 12px; 
     overflow: hidden;
-    /* Menentukan ukuran yang pas, tidak terlalu kecil & tidak kelewat besar */
+    /* UKURAN KOTAK YANG PAS: Tidak terlalu kecil, tidak kelewat besar */
     width: 100%;
     max-width: 380px; 
-    height: 440px; 
+    height: 400px; 
     
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
     border: 1px solid #e0e0e0;
     display: flex;
     flex-direction: column;
@@ -126,7 +126,7 @@ html, body {
 
 .card-image {
     width: 100%;
-    height: 65%; /* Gambar mengambil 65% tinggi kotak */
+    height: 65%; /* Gambar mengambil porsi atas */
     overflow: hidden;
     background: #e9ecef;
 }
@@ -134,12 +134,12 @@ html, body {
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Gambar kotak tidak gepeng */
+    object-fit: cover; /* Gaya foto profesional, tidak gepeng */
 }
 
-/* Area Judul */
+/* Area Judul di Bawah */
 .card-title-wrapper {
-    height: 35%; /* Sisa 35% untuk judul */
+    height: 35%; 
     padding: 15px;
     text-align: center;
     background: #ffffff;
@@ -156,7 +156,6 @@ html, body {
     color: #1a1a1a;
     letter-spacing: 1.5px; 
     text-transform: uppercase;
-    line-height: 1.3;
 }
 
 .card-title-wrapper::after {
@@ -164,7 +163,7 @@ html, body {
     display: block;
     width: 50px;
     height: 3px;
-    background: #d4af37; 
+    background: #d4af37; /* Garis emas */
     margin-top: 10px;
 }
 
@@ -178,20 +177,28 @@ html, body {
     color: #ffffff;
     text-align: center;
     font-size: 13px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     flex-shrink: 0;
 }
 
 .copyright-footer .brand-name {
     font-weight: 800;
-    color: #d4af37; /* Emas */
+    color: #d4af37; 
 }
 
-/* RESPONSIVE UNTUK HP */
+/* =========================================
+   RESPONSIVE (UNTUK LAYAR HP)
+   ========================================= */
 @media (max-width: 900px) {
     html, body {
-        overflow-y: auto; /* Scroll diizinkan di HP */
         height: auto;
+        overflow-y: auto; /* Di HP, izinkan scroll agar konten tidak mengecil aneh */
+    }
+    .website-image {
+        height: 200px; 
+    }
+    .website-image img {
+        object-fit: cover; /* Di HP, potong sedikit pinggirnya agar tidak terlalu melar */
     }
     .info-cards-section {
         flex-direction: column; 
@@ -201,7 +208,7 @@ html, body {
     .card {
         width: 100%; 
         max-width: 100%;
-        height: 400px; 
+        height: 350px; 
     }
 }
 </style>
@@ -209,12 +216,12 @@ html, body {
 
 <body>
 
-<!-- BANNER -->
+<!-- BANNER ATAS -->
 <main class="website-image">
     <img src="file_0000000005b0821198b8019f43a73116.webp" alt="Infotrink Banner">
 </main>
 
-<!-- MARQUEE -->
+<!-- TEKS BERJALAN -->
 <section class="marquee">
     <div class="marquee-track">
         <div class="marquee-item">
