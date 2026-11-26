@@ -14,37 +14,34 @@
 
 html, body {
     width: 100%;
-    min-height: 100vh;
-    /* Diperbolehkan scroll tipis jika layar terlalu pendek, tapi di layar normal pas 1 layar */
-    overflow-x: hidden; 
-    background: #ffffff;
+    height: 100vh; /* Mengunci tinggi layar pas 100% */
+    overflow: hidden; /* MENGHILANGKAN SCROLLBAR TOTAL */
+    background: #f4f7f6;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
     display: flex;
     flex-direction: column;
 }
 
 /* =========================================
-   1. BANNER ATAS (UTUH, TIDAK KEPOTONG, LEBAR PENUH)
+   1. BANNER ATAS (PENUH, TIDAK GEPENG)
    ========================================= */
 .website-image {
     width: 100%;
-    /* Menghilangkan batasan tinggi (height: vh) yang bikin kepotong/gepeng */
-    height: auto; 
+    height: 25vh; /* Tinggi 25% dari layar, pas dan tidak mendorong konten lain */
     flex-shrink: 0;
 }
 
 .website-image img {
     display: block;
-    width: 100%; /* Lebar mentok layar */
-    height: auto; /* Tinggi menyesuaikan gambar aslinya */
-    object-fit: contain; /* Memastikan gambar utuh */
-    
-    /* Memaksa proporsi gambar. Jika terlihat kurang pas, Anda bisa ubah angkanya */
-    aspect-ratio: 16 / 6; 
+    width: 100%; 
+    height: 100%; 
+    /* 'cover' = memenuhi layar tanpa gepeng, ujung gambar sedikit terpotong rapi */
+    object-fit: cover; 
+    object-position: center;
 }
 
 /* =========================================
-   2. TEKS BERJALAN (RAPAT DENGAN BANNER)
+   2. TEKS BERJALAN (RAPAT DI BAWAH BANNER)
    ========================================= */
 .marquee {
     width: 100%;
@@ -52,8 +49,7 @@ html, body {
     white-space: nowrap;
     background: #ffffff;
     border-bottom: 1px solid #e8e8e8;
-    border-top: 1px solid #e8e8e8;
-    padding: 12px 0; 
+    padding: 10px 0; 
     flex-shrink: 0;
 }
 
@@ -69,7 +65,7 @@ html, body {
 }
 
 .marquee-item span {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 1.5px;
     color: #292929;
@@ -92,32 +88,27 @@ html, body {
 }
 
 /* =========================================
-   3. AREA 3 KOTAK (UKURAN BESAR & GAGAH)
+   3. AREA 3 KOTAK (BESAR & MENGISI SISA LAYAR)
    ========================================= */
 .info-cards-section {
     width: 100%;
-    flex: 1; 
-    padding: 40px;
-    background: #f4f7f6; 
+    flex: 1; /* Mengisi seluruh sisa ruang antara banner dan footer */
+    padding: 20px 30px;
     display: flex;
     justify-content: center;
-    align-items: stretch; 
+    align-items: stretch; /* Kotak memanjang ke bawah mengikuti sisa layar */
     gap: 30px; 
 }
 
-/* Kotak dibiarkan besar, tanpa max-width yang bikin kecil */
 .card {
     background: #ffffff;
-    border-radius: 16px; 
+    border-radius: 12px; 
     overflow: hidden;
-    flex: 1; 
-    /* Menggunakan tinggi minimal agar tidak kekecilan */
-    min-height: 450px; 
-    
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
-    border: 1px solid #e0e0e0;
+    flex: 1; /* Membagi rata 3 kotak di sisa layar */
     display: flex;
     flex-direction: column;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #e0e0e0;
     transition: transform 0.3s ease;
 }
 
@@ -127,7 +118,7 @@ html, body {
 
 .card-image {
     width: 100%;
-    flex: 1; /* Gambar mengambil porsi terbesar di dalam kotak */
+    flex: 1; /* Gambar mengisi sisa ruang paling besar di dalam kotak */
     overflow: hidden;
     background: #e9ecef;
 }
@@ -135,15 +126,15 @@ html, body {
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover; /* Gambar kotak tidak gepeng, potong rapi */
 }
 
-/* Area Judul di Bawah */
+/* Area Judul di Bawah Kotak */
 .card-title-wrapper {
-    padding: 25px 15px;
+    padding: 20px 15px;
     text-align: center;
     background: #ffffff;
-    border-top: 5px solid #0056b3; 
+    border-top: 4px solid #0056b3; 
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -152,20 +143,20 @@ html, body {
 }
 
 .card-title {
-    font-size: 24px; 
+    font-size: 20px; 
     font-weight: 800; 
     color: #1a1a1a;
-    letter-spacing: 2px; 
+    letter-spacing: 1.5px; 
     text-transform: uppercase;
 }
 
 .card-title-wrapper::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 4px;
+    width: 50px;
+    height: 3px;
     background: #d4af37; 
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 /* =========================================
@@ -173,12 +164,12 @@ html, body {
    ========================================= */
 .copyright-footer {
     width: 100%;
-    padding: 18px;
+    padding: 12px;
     background: #111111; 
     color: #ffffff;
     text-align: center;
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
     flex-shrink: 0;
 }
 
@@ -188,19 +179,23 @@ html, body {
 }
 
 /* =========================================
-   RESPONSIVE UNTUK HP (LAYAR KECIL)
+   RESPONSIVE UNTUK HP
    ========================================= */
 @media (max-width: 900px) {
+    html, body {
+        height: auto;
+        overflow-y: auto; /* Di HP, izinkan scroll karena layar sempit */
+    }
+    .website-image {
+        height: 200px; 
+    }
     .info-cards-section {
         flex-direction: column; 
         padding: 20px;
-        gap: 20px;
+        height: auto;
     }
     .card {
-        min-height: 350px; /* Sedikit lebih pendek di HP */
-    }
-    .website-image img {
-        aspect-ratio: auto; /* Kembalikan ke proporsi asli di HP */
+        min-height: 350px;
     }
 }
 </style>
@@ -225,12 +220,12 @@ html, body {
     </div>
 </section>
 
-<!-- 3. KOTAK BESAR -->
+<!-- 3. KOTAK -->
 <section class="info-cards-section">
     
     <div class="card">
         <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pengetahuan Infotrink">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pengetahuan Infotrink">
         </div>
         <div class="card-title-wrapper">
             <div class="card-title">PENGETAHUAN INFOTRINK</div>
@@ -239,7 +234,7 @@ html, body {
 
     <div class="card">
         <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Struktur Kerangka">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Struktur Kerangka">
         </div>
         <div class="card-title-wrapper">
             <div class="card-title">STRUKTUR KERANGKA</div>
@@ -248,7 +243,7 @@ html, body {
 
     <div class="card">
         <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pusat Informasi">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pusat Informasi">
         </div>
         <div class="card-title-wrapper">
             <div class="card-title">PUSAT INFORMASI</div>
