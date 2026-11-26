@@ -17,11 +17,12 @@ html, body {
     min-height: 100%;
     overflow-x: hidden;
     background: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
+    /* Font sistem yang bersih dan modern */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
 }
 
 /* =========================================
-   GAMBAR WEBSITE (LEBAR PENUH, TINGGI DISESUAIKAN)
+   GAMBAR WEBSITE (LEBAR PENUH)
    ========================================= */
 .website-image {
     width: 100%;
@@ -87,83 +88,100 @@ html, body {
 }
 
 /* =========================================
-   SECTION 3 KOTAK (KIRI, TENGAH, KANAN)
+   SECTION 3 KOTAK (BESAR, MEWAH & BERKELAS)
    ========================================= */
 .info-cards-section {
     width: 100%;
-    padding: 60px 40px;
-    background: #f8f9fa; /* Warna latar abu-abu sangat muda agar kotak putih menonjol */
+    padding: 80px 40px; /* Padding lebih besar untuk kesan lega */
+    background: #f4f7f6; /* Warna latar yang sedikit kontras dengan kotak putih */
     display: flex;
     justify-content: center;
-    gap: 30px; /* Jarak antar kotak */
-    flex-wrap: wrap; /* Agar turun ke bawah jika layar HP */
+    gap: 40px; /* Jarak antar kotak yang lebar */
+    flex-wrap: wrap;
 }
 
-/* Gaya Dasar Kotak */
+/* Desain Kotak Utama */
 .card {
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 16px; /* Sudut lebih melengkung, elegan */
     overflow: hidden;
-    width: calc(33.333% - 20px); /* 3 kotak sejajar */
-    min-width: 280px; /* Batas minimum lebar kotak */
-    max-width: 400px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #eaeaea;
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px; /* Batas lebar maksimal agar proporsional */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Bayangan halus mewah */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    border: 1px solid #f0f0f0;
     display: flex;
     flex-direction: column;
 }
 
+/* Efek Hover: Kotak naik dan bayangan lebih tebal */
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Area Gambar di dalam Kotak */
+/* Area Gambar */
 .card-image {
     width: 100%;
-    height: 200px; /* Tinggi gambar di dalam kotak */
+    height: 280px; /* Gambar dibuat tinggi agar terlihat gagah */
     overflow: hidden;
-    background: #e9ecef; /* Warna placeholder jika gambar belum load */
+    background: #e9ecef;
+    position: relative;
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Menjaga gambar tetap proporsional tanpa gepeng */
-    transition: transform 0.3s ease;
+    object-fit: cover; /* Menjaga proporsi gambar agar tidak gepeng */
+    transition: transform 0.6s ease;
 }
 
+/* Efek Hover: Gambar zoom perlahan */
 .card:hover .card-image img {
-    transform: scale(1.05); /* Efek zoom saat di-hover */
+    transform: scale(1.08);
 }
 
 /* Area Judul di Bawah Gambar */
-.card-title {
-    padding: 20px 15px;
+.card-title-wrapper {
+    padding: 30px 20px;
     text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: #111111;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border-top: 2px solid #0056b3; /* Garis biru pemisah */
     background: #ffffff;
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-top: 4px solid #0056b3; /* Garis biru tegas di atas judul */
 }
 
-/* RESPONSIVE UNTUK HP */
-@media (max-width: 900px) {
+/* Gaya Teks Judul */
+.card-title {
+    font-size: 22px;
+    font-weight: 800; /* Sangat tebal */
+    color: #1a1a1a;
+    letter-spacing: 2px; /* Jarak huruf lebar untuk kesan premium */
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+/* Garis aksen emas kecil di bawah judul */
+.card-title-wrapper::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #d4af37; /* Warna emas */
+    margin-top: 15px;
+}
+
+/* =========================================
+   RESPONSIVE UNTUK TABLET DAN HP
+   ========================================= */
+@media (max-width: 1024px) {
     .info-cards-section {
-        padding: 40px 20px;
-        gap: 20px;
-    }
-    
-    .card {
-        width: calc(50% - 10px); /* Jadi 2 kolom di tablet */
+        padding: 60px 30px;
+        gap: 30px;
     }
 }
 
@@ -180,18 +198,27 @@ html, body {
         font-size: 11px;
         letter-spacing: 1.3px;
     }
-
-    .marquee-item .divider {
-        margin: 0 17px;
-    }
     
     .marquee-track {
         animation-duration: 22s; 
     }
 
+    .info-cards-section {
+        padding: 40px 20px;
+    }
+
     .card {
-        width: 100%; /* Jadi 1 kolom penuh di HP */
+        width: 100%; /* Satu kolom penuh di HP */
         max-width: 100%;
+        min-width: 100%;
+    }
+
+    .card-image {
+        height: 220px; /* Sedikit lebih pendek di HP */
+    }
+
+    .card-title {
+        font-size: 18px;
     }
 }
 
@@ -225,34 +252,40 @@ html, body {
     </div>
 </section>
 
-<!-- SECTION 3 KOTAK -->
+<!-- SECTION 3 KOTAK BESAR -->
 <section class="info-cards-section">
     
     <!-- Kotak 1 -->
     <div class="card">
         <div class="card-image">
-            <!-- Ganti URL src di bawah dengan gambar Anda -->
-            <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pengetahuan Infotrink">
+            <!-- Gambar tema Pengetahuan/Perpustakaan -->
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pengetahuan Infotrink">
         </div>
-        <div class="card-title">PENGETAHUAN INFOTRINK</div>
+        <div class="card-title-wrapper">
+            <div class="card-title">PENGETAHUAN INFOTRINK</div>
+        </div>
     </div>
 
     <!-- Kotak 2 -->
     <div class="card">
         <div class="card-image">
-            <!-- Ganti URL src di bawah dengan gambar Anda -->
-            <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Struktur Kerangka">
+            <!-- Gambar tema Struktur/Arsitektur/Bangunan -->
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Struktur Kerangka">
         </div>
-        <div class="card-title">STRUKTUR KERANGKA</div>
+        <div class="card-title-wrapper">
+            <div class="card-title">STRUKTUR KERANGKA</div>
+        </div>
     </div>
 
     <!-- Kotak 3 -->
     <div class="card">
         <div class="card-image">
-            <!-- Ganti URL src di bawah dengan gambar Anda -->
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pusat Informasi">
+            <!-- Gambar tema Data/Digital/Pusat Informasi -->
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pusat Informasi">
         </div>
-        <div class="card-title">PUSAT INFORMASI</div>
+        <div class="card-title-wrapper">
+            <div class="card-title">PUSAT INFORMASI</div>
+        </div>
     </div>
 
 </section>
