@@ -42,15 +42,15 @@ html, body {
     padding: 19px 0;
 }
 
-/* ANIMASI BERULANG - KUNCI PERUBAHAN DI SINI */
+/* ANIMASI BERULANG */
 .marquee-track {
-    display: inline-block; /* Ubah ke inline-block agar lebarnya mengikuti teks */
+    display: inline-block;
     will-change: transform;
     /* 
-       100vw artinya teks mulai dari luar layar sebelah kanan.
-       -100% artinya teks berjalan sampai habis ke kiri luar layar.
+       Durasi 30s: Waktu yang pas untuk teks yang cukup panjang. 
+       Tidak terlalu cepat, tidak terlalu lambat. Terkesan profesional.
     */
-    animation: marquee-scroll 20s linear infinite;
+    animation: marquee-scroll 30s linear infinite;
 }
 
 /* ISI TEKS */
@@ -82,8 +82,8 @@ html, body {
 }
 
 /* 
-   Animasi: Mulai dari 100vw (ujung kanan layar), 
-   berjalan ke kiri melewati layar sampai hilang (-100%).
+   Animasi: Mulai dari luar layar kanan (100vw), 
+   berjalan mulus ke kiri sampai hilang (-100%).
 */
 @keyframes marquee-scroll {
     0% {
@@ -109,9 +109,9 @@ html, body {
         margin: 0 17px;
     }
     
-    /* Di HP, waktunya disesuaikan agar tidak terlalu cepat */
+    /* Di HP, karena layar lebih sempit, durasi disesuaikan agar tidak terlalu cepat */
     .marquee-track {
-        animation-duration: 15s; 
+        animation-duration: 22s; 
     }
 }
 
@@ -137,11 +137,11 @@ html, body {
 <section class="marquee">
     <div class="marquee-track">
 
-        <!-- Hanya butuh SATU blok teks dengan desain ini -->
+        <!-- Kalimat diperpanjang & dibuat lebih profesional -->
         <div class="marquee-item">
             <span class="brand">INFOTRINK</span>
             <span class="divider">|</span>
-            <span>Media Digital yang Menghimpun Informasi dan Perkembangan dalam Beragam Bentuk melalui Satu Wadah Terpadu</span>
+            <span>Pusat Media Digital Terpercaya yang Menghimpun, Mengemas, dan Menyajikan Informasi serta Perkembangan Terkini dari Beragam Aspek Kehidupan dalam Satu Wadah Terpadu, Akurat, dan Berkelas</span>
             <span class="divider">◆</span>
         </div>
 
