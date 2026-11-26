@@ -17,6 +17,7 @@ html, body {
     min-height: 100%;
     overflow-x: hidden;
     background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* =========================================
@@ -24,7 +25,7 @@ html, body {
    ========================================= */
 .website-image {
     width: 100%;
-    height: 380px; /* Ubah angka ini jika ingin lebih kecil/besar */
+    height: 380px; 
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -35,7 +36,7 @@ html, body {
     display: block;
     width: 100%; 
     height: 100%; 
-    object-fit: fill; /* Agar gambar menyesuaikan tanpa terpotong */
+    object-fit: fill; 
 }
 
 /* AREA TEKS BERJALAN */
@@ -48,14 +49,12 @@ html, body {
     padding: 19px 0;
 }
 
-/* ANIMASI BERULANG */
 .marquee-track {
     display: inline-block;
     will-change: transform;
     animation: marquee-scroll 30s linear infinite;
 }
 
-/* ISI TEKS BERJALAN */
 .marquee-item {
     display: inline-flex;
     align-items: center;
@@ -63,7 +62,6 @@ html, body {
 }
 
 .marquee-item span {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 1.8px;
@@ -84,15 +82,91 @@ html, body {
 }
 
 @keyframes marquee-scroll {
-    0% {
-        transform: translateX(100vw);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+}
+
+/* =========================================
+   SECTION 3 KOTAK (KIRI, TENGAH, KANAN)
+   ========================================= */
+.info-cards-section {
+    width: 100%;
+    padding: 60px 40px;
+    background: #f8f9fa; /* Warna latar abu-abu sangat muda agar kotak putih menonjol */
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Jarak antar kotak */
+    flex-wrap: wrap; /* Agar turun ke bawah jika layar HP */
+}
+
+/* Gaya Dasar Kotak */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    width: calc(33.333% - 20px); /* 3 kotak sejajar */
+    min-width: 280px; /* Batas minimum lebar kotak */
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Area Gambar di dalam Kotak */
+.card-image {
+    width: 100%;
+    height: 200px; /* Tinggi gambar di dalam kotak */
+    overflow: hidden;
+    background: #e9ecef; /* Warna placeholder jika gambar belum load */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Menjaga gambar tetap proporsional tanpa gepeng */
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.05); /* Efek zoom saat di-hover */
+}
+
+/* Area Judul di Bawah Gambar */
+.card-title {
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-top: 2px solid #0056b3; /* Garis biru pemisah */
+    background: #ffffff;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* RESPONSIVE UNTUK HP */
+@media (max-width: 900px) {
+    .info-cards-section {
+        padding: 40px 20px;
+        gap: 20px;
+    }
+    
+    .card {
+        width: calc(50% - 10px); /* Jadi 2 kolom di tablet */
+    }
+}
+
 @media (max-width: 600px) {
     .website-image {
         height: 200px; 
@@ -113,6 +187,11 @@ html, body {
     
     .marquee-track {
         animation-duration: 22s; 
+    }
+
+    .card {
+        width: 100%; /* Jadi 1 kolom penuh di HP */
+        max-width: 100%;
     }
 }
 
@@ -144,6 +223,38 @@ html, body {
             <span class="divider">◆</span>
         </div>
     </div>
+</section>
+
+<!-- SECTION 3 KOTAK -->
+<section class="info-cards-section">
+    
+    <!-- Kotak 1 -->
+    <div class="card">
+        <div class="card-image">
+            <!-- Ganti URL src di bawah dengan gambar Anda -->
+            <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pengetahuan Infotrink">
+        </div>
+        <div class="card-title">PENGETAHUAN INFOTRINK</div>
+    </div>
+
+    <!-- Kotak 2 -->
+    <div class="card">
+        <div class="card-image">
+            <!-- Ganti URL src di bawah dengan gambar Anda -->
+            <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Struktur Kerangka">
+        </div>
+        <div class="card-title">STRUKTUR KERANGKA</div>
+    </div>
+
+    <!-- Kotak 3 -->
+    <div class="card">
+        <div class="card-image">
+            <!-- Ganti URL src di bawah dengan gambar Anda -->
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pusat Informasi">
+        </div>
+        <div class="card-title">PUSAT INFORMASI</div>
+    </div>
+
 </section>
 
 </body>
