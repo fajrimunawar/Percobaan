@@ -14,8 +14,9 @@
 
 html, body {
     width: 100%;
-    height: 100vh;
-    overflow: hidden; /* Memastikan tidak ada scroll */
+    min-height: 100vh;
+    /* Diperbolehkan scroll tipis jika layar terlalu pendek, tapi di layar normal pas 1 layar */
+    overflow-x: hidden; 
     background: #ffffff;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
     display: flex;
@@ -23,21 +24,23 @@ html, body {
 }
 
 /* =========================================
-   1. BANNER ATAS (DIBESARKAN & TIDAK KEPOTONG)
+   1. BANNER ATAS (UTUH, TIDAK KEPOTONG, LEBAR PENUH)
    ========================================= */
 .website-image {
     width: 100%;
-    /* Diberi tinggi yang cukup besar (35% dari layar) */
-    height: 35vh; 
+    /* Menghilangkan batasan tinggi (height: vh) yang bikin kepotong/gepeng */
+    height: auto; 
     flex-shrink: 0;
 }
 
 .website-image img {
     display: block;
-    width: 100%; 
-    height: 100%; 
-    /* 'fill' menjamin gambar TIDAK KEPOTONG, melainkan menyesuaikan kotaknya */
-    object-fit: fill; 
+    width: 100%; /* Lebar mentok layar */
+    height: auto; /* Tinggi menyesuaikan gambar aslinya */
+    object-fit: contain; /* Memastikan gambar utuh */
+    
+    /* Memaksa proporsi gambar. Jika terlihat kurang pas, Anda bisa ubah angkanya */
+    aspect-ratio: 16 / 6; 
 }
 
 /* =========================================
@@ -50,7 +53,7 @@ html, body {
     background: #ffffff;
     border-bottom: 1px solid #e8e8e8;
     border-top: 1px solid #e8e8e8;
-    padding: 12px 0; /* Padding kecil agar dekat */
+    padding: 12px 0; 
     flex-shrink: 0;
 }
 
@@ -89,26 +92,27 @@ html, body {
 }
 
 /* =========================================
-   3. AREA 3 KOTAK (DIPAKSA BESAR)
+   3. AREA 3 KOTAK (UKURAN BESAR & GAGAH)
    ========================================= */
 .info-cards-section {
     width: 100%;
-    flex: 1; /* Mengisi sisa layar yang ada */
-    padding: 30px;
+    flex: 1; 
+    padding: 40px;
     background: #f4f7f6; 
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Kotak memanjang ke bawah */
+    align-items: stretch; 
     gap: 30px; 
 }
 
-/* KOTAK DIBUAT SANGAT BESAR (TANPA MAX-WIDTH) */
+/* Kotak dibiarkan besar, tanpa max-width yang bikin kecil */
 .card {
     background: #ffffff;
     border-radius: 16px; 
     overflow: hidden;
-    flex: 1; /* Memaksa kotak mengambil 1/3 layar secara merata */
-    height: 100%; 
+    flex: 1; 
+    /* Menggunakan tinggi minimal agar tidak kekecilan */
+    min-height: 450px; 
     
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
     border: 1px solid #e0e0e0;
@@ -123,7 +127,7 @@ html, body {
 
 .card-image {
     width: 100%;
-    flex: 1; /* Gambar mengambil sisa ruang paling besar di dalam kotak */
+    flex: 1; /* Gambar mengambil porsi terbesar di dalam kotak */
     overflow: hidden;
     background: #e9ecef;
 }
@@ -131,7 +135,7 @@ html, body {
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Foto tidak gepeng, memotong rapi pinggirnya */
+    object-fit: cover; 
 }
 
 /* Area Judul di Bawah */
@@ -139,7 +143,7 @@ html, body {
     padding: 25px 15px;
     text-align: center;
     background: #ffffff;
-    border-top: 5px solid #0056b3; /* Garis biru tebal */
+    border-top: 5px solid #0056b3; 
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -148,7 +152,7 @@ html, body {
 }
 
 .card-title {
-    font-size: 24px; /* Tulisan besar karena kotaknya besar */
+    font-size: 24px; 
     font-weight: 800; 
     color: #1a1a1a;
     letter-spacing: 2px; 
@@ -160,7 +164,7 @@ html, body {
     display: block;
     width: 60px;
     height: 4px;
-    background: #d4af37; /* Garis emas */
+    background: #d4af37; 
     margin-top: 15px;
 }
 
@@ -187,24 +191,16 @@ html, body {
    RESPONSIVE UNTUK HP (LAYAR KECIL)
    ========================================= */
 @media (max-width: 900px) {
-    html, body {
-        height: auto;
-        overflow-y: auto; /* Scroll diizinkan untuk HP */
-    }
-    .website-image {
-        height: auto; 
-    }
-    .website-image img {
-        object-fit: contain; /* Di HP, gambar utuh */
-    }
     .info-cards-section {
         flex-direction: column; 
         padding: 20px;
-        height: auto;
         gap: 20px;
     }
     .card {
-        height: 400px; /* Tinggi tetap untuk HP */
+        min-height: 350px; /* Sedikit lebih pendek di HP */
+    }
+    .website-image img {
+        aspect-ratio: auto; /* Kembalikan ke proporsi asli di HP */
     }
 }
 </style>
