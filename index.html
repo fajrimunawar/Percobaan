@@ -2,49 +2,139 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title></title>
 
-        html, body {
-            width: 100%;
-            min-height: 100%;
-            background: #ffffff;
-            overflow-x: hidden;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .website {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
+html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: #ffffff;
+}
 
-        .website img {
-            display: block;
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-            object-fit: contain;
-            object-position: top center;
-        }
-    </style>
+/* GAMBAR UTAMA */
+.website {
+    width: 100%;
+}
+
+.website img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* TEKS BERJALAN */
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #ffffff;
+    padding: 17px 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: berjalan 28s linear infinite;
+}
+
+.marquee-content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding-right: 45px;
+}
+
+.marquee-content span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: #252525;
+    text-transform: uppercase;
+}
+
+.marquee-content .separator {
+    margin: 0 28px;
+    color: #999999;
+    font-size: 12px;
+}
+
+@keyframes berjalan {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* GERAK TETAP HALUS */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <main class="website">
-        <img
-            src="file_0000000005b0821198b8019f43a73116.webp"
-            alt=""
-        >
-    </main>
+<!-- GAMBAR -->
+<main class="website">
+    <img
+        src="file_0000000005b0821198b8019f43a73116.webp"
+        alt=""
+    >
+</main>
+
+<!-- TEKS BERJALAN -->
+<div class="marquee">
+    <div class="marquee-track">
+
+        <div class="marquee-content">
+            <span>INFOTRINK</span>
+            <span class="separator">◆</span>
+            <span>Informasi</span>
+            <span class="separator">◆</span>
+            <span>Pengetahuan</span>
+            <span class="separator">◆</span>
+            <span>Karya Ilmiah</span>
+            <span class="separator">◆</span>
+            <span>Pengembangan Wawasan</span>
+            <span class="separator">◆</span>
+            <span>Membangun Masa Depan yang Lebih Bermakna</span>
+            <span class="separator">◆</span>
+        </div>
+
+        <div class="marquee-content" aria-hidden="true">
+            <span>INFOTRINK</span>
+            <span class="separator">◆</span>
+            <span>Informasi</span>
+            <span class="separator">◆</span>
+            <span>Pengetahuan</span>
+            <span class="separator">◆</span>
+            <span>Karya Ilmiah</span>
+            <span class="separator">◆</span>
+            <span>Pengembangan Wawasan</span>
+            <span class="separator">◆</span>
+            <span>Membangun Masa Depan yang Lebih Bermakna</span>
+            <span class="separator">◆</span>
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>
