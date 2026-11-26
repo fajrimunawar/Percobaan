@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFOTRINK - Ekosistem Digital Terpadu</title>
+    <title>INFOTRINK</title>
     <style>
-        /* Reset penuh agar menempel di setiap sudut layar tanpa scroll */
         * {
             margin: 0;
             padding: 0;
@@ -13,181 +12,23 @@
         }
 
         html, body {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100dvh;
             overflow: hidden;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #ffffff;
-            color: #1e293b;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* 1. Bagian Poster Atas: Ukuran diperbesar lagi (49vh) & mentok pojok kiri ke kanan */
-        .banner-penuh {
-            width: 100vw;
-            height: 49vh;
-            margin: 0;
-            padding: 0;
-            line-height: 0;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .banner-penuh img {
+        .fullscreen-bg {
             width: 100%;
             height: 100%;
-            object-fit: fill;
-            display: block;
-        }
-
-        /* 2. Kalimat Berjalan (Kanan ke Kiri, Kecepatan Sedang) */
-        .running-text-container {
-            width: 100vw;
-            background: linear-gradient(90deg, #003366 0%, #0059b3 50%, #003366 100%);
-            color: #ffffff;
-            padding: 7px 0;
-            overflow: hidden;
-            position: relative;
-            border-bottom: 3px solid #00a8ff;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-            flex-shrink: 0;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-        }
-
-        .running-text {
-            display: inline-block;
-            white-space: nowrap;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.4px;
-            animation: jalanKananKeKiri 36s linear infinite;
-        }
-
-        .running-text-container:hover .running-text {
-            animation-play-state: paused;
-        }
-
-        .pemisah {
-            color: #00d2ff;
-            margin: 0 24px;
-            font-weight: bold;
-        }
-
-        @keyframes jalanKananKeKiri {
-            0% {
-                transform: translateX(100vw);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* 3. Bagian Konten Utama: Terisi penuh sampai mentok bawah layar */
-        .konten-utama {
-            flex: 1;
-            width: 100vw;
-            padding: 6px 24px 6px 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            background-color: #ffffff;
-        }
-
-        .header-judul {
-            text-align: center;
-            margin-bottom: 6px;
-            flex-shrink: 0;
-        }
-
-        /* Judul Utama: Besar, tegas, dan rapi */
-        .judul-bagian {
-            font-size: 34px;
-            font-weight: 900;
-            color: #003366;
-            letter-spacing: 1.5px;
-            line-height: 1.06;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .garis-judul {
-            width: 140px;
-            height: 3.5px;
-            background: linear-gradient(90deg, #0059b3, #00a8ff);
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        /* Paragraf Penjelasan: Huruf besar (17px), rapat, & super panjang sampai mentok bawah */
-        .isi-penjelasan {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 6px;
-        }
-
-        .isi-penjelasan p {
-            font-size: 17px;
-            line-height: 1.35;
-            color: #1e293b;
-            text-align: justify;
-            text-justify: inter-word;
-            margin: 0;
-        }
-
-        /* Penyesuaian otomatis jika dibuka pada layar tablet dengan rasio tinggi lebih pendek */
-        @media (max-height: 750px) {
-            .banner-penuh {
-                height: 48vh;
-            }
-            .judul-bagian {
-                font-size: 30px;
-            }
-            .isi-penjelasan {
-                gap: 5px;
-            }
-            .isi-penjelasan p {
-                font-size: 16px;
-                line-height: 1.32;
-            }
+            background-image: url('file_0000000005b0821198b8019f43a73116.webp');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
     </style>
 </head>
 <body>
-
-    <!-- 1. Gambar Poster Atas (Ukuran lebih besar lagi & mentok pojok kiri-kanan) -->
-    <div class="banner-penuh">
-        <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK Digital Information & Knowledge Media">
-    </div>
-
-    <!-- 2. Kalimat Berjalan (Kanan ke Kiri) -->
-    <div class="running-text-container">
-        <div class="running-text">
-            Selamat Datang di <strong>INFOTRINK</strong> — Ekosistem Digital Terpadu sebagai Pusat Informasi, Dokumentasi, dan Pengelolaan Aktivitas Modern dalam Satu Ruang yang Terhubung dan Berkelanjutan <span class="pemisah">✦</span> Membangun Keterpaduan, Inovasi, dan Perkembangan Masa Depan.
-        </div>
-    </div>
-
-    <!-- 3. Bagian Pengetahuan Tentang INFOTRINK -->
-    <section class="konten-utama">
-        <div class="header-judul">
-            <h1 class="judul-bagian">PENGETAHUAN TENTANG INFOTRINK</h1>
-            <div class="garis-judul"></div>
-        </div>
-
-        <div class="isi-penjelasan">
-            <p>
-                <strong>INFOTRINK</strong> merupakan sebuah ekosistem digital terpadu yang dirancang secara strategis sebagai wadah utama untuk menghimpun, menghubungkan, mengembangkan, dan mengelola berbagai aktivitas maupun entitas dalam satu kesatuan platform berbasis website. Kehadiran INFOTRINK melampaui batas situs informasi konvensional ataupun sekadar halaman profil biasa, melainkan dibangun sebagai ruang digital terstruktur yang menyatukan beragam inisiatif dengan karakteristik, fungsi, serta peran tersendiri ke dalam satu lingkungan yang saling terhubung, selaras, dan saling menguatkan guna menciptakan tata kelola informasi yang menyeluruh, terorganisasi, dan terintegrasi secara profesional di setiap lini kegiatan.
-            </p>
-            <p>
-                Dalam arah pembentukannya, INFOTRINK berfokus menjadi pusat dokumentasi serta penyajian informasi yang akuntabel mengenai perjalanan pembangunan, proses pengelolaan, progres pertumbuhan, hingga berbagai pencapaian nyata yang telah diwujudkan maupun yang tengah direncanakan secara bertahap dan terukur. Melalui pengelolaan informasi yang rapi, terstandar, dan sistematis, setiap aktivitas, rekam jejak kerja, pengembangan inovasi, serta dinamika perubahan yang berada di dalam lingkup ekosistem ini dapat terarsip dengan baik, mudah ditelusuri kembali oleh publik maupun pemangku kepentingan, dan memberikan gambaran yang utuh, objektif, transparan, serta kredibel bagi siapa saja yang mengaksesnya.
-            </p>
-            <p>
-                Secara menyeluruh, INFOTRINK merepresentasikan komitmen kuat terhadap keterpaduan sistem, akuntabilitas perkembangan, dan kesinambungan inovasi dalam satu atap digital yang modern, responsif, dan dinamis. Platform ini terus bertumbuh sebagai ruang kolaborasi produktif, pusat rujukan informasi utama, sekaligus fondasi pengembangan jangka panjang yang adaptif terhadap kemajuan teknologi global dan tuntutan kebutuhan zaman, sehingga mampu menghadirkan manfaat nyata, terarah, terukur, dan berkelanjutan bagi seluruh ekosistem, mitra strategis, maupun masyarakat luas yang terhubung di dalamnya setiap saat tanpa batas ruang dan waktu.
-            </p>
-        </div>
-    </section>
-
+    <div class="fullscreen-bg"></div>
 </body>
 </html>
