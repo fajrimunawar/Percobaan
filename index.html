@@ -20,12 +20,13 @@ html, body {
 }
 
 /* =========================================
-   GAMBAR WEBSITE (LEBAR PENUH, TINGGI DIKECILKAN)
+   GAMBAR WEBSITE (LEBAR PENUH, TINGGI DISESUAIKAN)
    ========================================= */
 .website-image {
     width: 100%;
-    /* Memberikan tinggi yang fix dan kecil agar tidak kebesaran */
-    height: 250px; /* Ubah angka ini jika masih terasa besar/kecil */
+    /* KUNCI UTAMA: Menaikkan tinggi agar tidak terlalu gepeng */
+    height: 380px; /* Ubah angka ini: 350px (kecil), 400px (sedang), 450px (besar) */
+    
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -35,11 +36,8 @@ html, body {
 .website-image img {
     display: block;
     width: 100%; /* Memenuhi pojok kiri ke kanan */
-    height: 100%; /* Mengikuti tinggi container (250px) */
-    
-    /* KUNCI UTAMA: 'fill' akan membuat gambar gepeng/melar 
-       memenuhi kotak tanpa terpotong sama sekali */
-    object-fit: fill; 
+    height: 100%; /* Mengikuti tinggi container */
+    object-fit: fill; /* Tetap menggunakan 'fill' agar tidak terpotong */
 }
 
 /* AREA TEKS BERJALAN */
@@ -129,8 +127,8 @@ html, body {
 /* RESPONSIVE UNTUK HP */
 @media (max-width: 600px) {
     .website-image {
-        /* Tinggi gambar di HP diatur lebih pendek lagi */
-        height: 150px; 
+        /* Tinggi gambar di HP disesuaikan (misal 200px) */
+        height: 200px; 
     }
 
     .marquee {
