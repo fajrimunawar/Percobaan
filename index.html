@@ -16,146 +16,203 @@ html, body {
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
-    background: #ffffff;
+    background: #f4f6f9; /* Background abu-abu elegan */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* GAMBAR WEBSITE */
+/* 
+   KUNCI: Membuat halaman muat dalam 1 layar (tanpa scroll atas-bawah)
+   Menggunakan flexbox agar pembagian ruangnya otomatis rapi.
+*/
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 18px; /* Jarak antar blok */
+}
+
+/* =========================================
+   BAGIAN GAMBAR (Diperkecil & diberi gaya Card)
+   ========================================= */
 .website-image {
     width: 100%;
-    height: auto;
+    max-width: 1000px; /* Dibatasi agar tidak terlalu lebar */
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Shadow halus */
+    border: 1px solid #e0e0e0;
+    flex-shrink: 0; /* Mencegah gambar mengecil berlebihan */
 }
 
 .website-image img {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: contain;
+    max-height: 25vh; /* Tinggi gambar maksimal 25% dari layar */
+    object-fit: cover;
+    object-position: center;
 }
 
-/* AREA TEKS BERJALAN */
+/* =========================================
+   BAGIAN TEKS BERJALAN
+   ========================================= */
 .marquee {
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
     background: #ffffff;
-    border-bottom: 1px solid #e8e8e8;
-    padding: 19px 0;
+    border-radius: 12px;
+    padding: 14px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid #eaeaea;
+    flex-shrink: 0;
 }
 
-/* ANIMASI BERULANG */
 .marquee-track {
     display: inline-block;
     will-change: transform;
-    animation: marquee-scroll 30s linear infinite;
+    animation: marquee-scroll 45s linear infinite; /* Super panjang, jadi lebih lama */
 }
 
-/* ISI TEKS BERJALAN */
 .marquee-item {
     display: inline-flex;
     align-items: center;
-    padding-right: 60px;
+    padding-right: 50px;
 }
 
-.marquee-item span {
-    font-family: Arial, Helvetica, sans-serif;
+/* Variasi Gaya Teks di Marquee */
+.marquee-item .brand {
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #004aad;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.marquee-item .text-normal {
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 1.8px;
+    letter-spacing: 1px;
     color: #292929;
     text-transform: uppercase;
 }
 
-.marquee-item .brand {
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: #111111;
+.marquee-item .text-italic {
+    font-style: italic;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 0.5px;
+    font-size: 13px;
 }
 
 .marquee-item .divider {
-    margin: 0 24px;
-    color: #a5a5a5;
+    margin: 0 22px;
+    color: #c0c0c0;
     font-size: 12px;
+    font-weight: 300;
 }
 
 @keyframes marquee-scroll {
-    0% {
-        transform: translateX(100vw);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
 }
 
 /* =========================================
-   BAGIAN PENGENALAN TENTANG INFOTRINK
+   BAGIAN PENGENALAN (Desain Card Baru)
    ========================================= */
 .intro-section {
     width: 100%;
-    padding: 35px 40px 60px 40px; /* Atas, Kanan, Bawah, Kiri */
+    max-width: 1000px;
+    margin: 0 auto;
     background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+    flex-grow: 1; /* Mengisi sisa ruang yang tersedia */
+    overflow-y: auto; /* Antisipasi jika teks sangat panjang di layar kecil */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* JUDUL */
+/* Container Judul dengan Garis Aksen */
+.intro-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+/* Garis vertikal biru sebagai aksen pengganti icon/angka */
+.intro-header::before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 24px;
+    background: #004aad;
+    border-radius: 2px;
+    margin-right: 12px;
+}
+
 .intro-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px; /* Ukuran lebih kecil & proporsional */
-    font-weight: 700; /* Tebal tapi tidak terlalu berat */
-    letter-spacing: 0.5px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
     color: #111111;
-    text-align: left; /* Pojok kiri */
-    margin-bottom: 12px; /* Jarak ke paragraf pas (tidak jauh, tidak dekat) */
-    line-height: 1.3;
+    text-transform: uppercase;
 }
 
-/* PARAGRAF */
 .intro-paragraph {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    color: #333333;
-    text-align: justify; /* Rata kanan-kiri */
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: #444444;
+    text-align: justify;
     text-justify: inter-word;
-    width: 100%; /* Dari ujung kiri sampai ujung kanan */
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    .marquee {
-        padding: 16px 0;
+/* =========================================
+   RESPONSIVE (Untuk HP & Tablet)
+   ========================================= */
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: 15px;
+        gap: 15px;
+        min-height: 100vh;
+        /* Di HP, izinkan scroll jika kontennya sangat panjang */
+        height: auto; 
     }
 
-    .marquee-item span {
-        font-size: 11px;
-        letter-spacing: 1.3px;
+    .website-image img {
+        max-height: 20vh;
     }
 
-    .marquee-item .divider {
-        margin: 0 17px;
-    }
-    
     .marquee-track {
-        animation-duration: 22s; 
+        animation-duration: 30s;
     }
 
-    /* Penyesuaian untuk HP */
+    .marquee-item .brand { font-size: 12px; }
+    .marquee-item .text-normal { font-size: 11px; }
+    .marquee-item .text-italic { font-size: 11px; }
+
     .intro-section {
-        padding: 25px 20px 40px 20px;
+        padding: 20px 20px;
+        border-radius: 12px;
+    }
+
+    .intro-header::before {
+        height: 18px;
     }
 
     .intro-title {
-        font-size: 20px; /* Lebih kecil di HP */
-        margin-bottom: 10px; /* Jarak tetap pas di HP */
+        font-size: 16px;
+        letter-spacing: 1px;
     }
 
     .intro-paragraph {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.7;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .marquee-track {
-        animation: none;
     }
 }
 </style>
@@ -163,33 +220,53 @@ html, body {
 
 <body>
 
-<!-- GAMBAR UTAMA -->
-<main class="website-image">
-    <img
-        src="file_0000000005b0821198b8019f43a73116.webp"
-        alt="Infotrink Banner"
-    >
-</main>
+<!-- WRAPPER UTAMA (Agar muat 1 layar) -->
+<div class="page-wrapper">
 
-<!-- TEKS BERJALAN -->
-<section class="marquee">
-    <div class="marquee-track">
-        <div class="marquee-item">
-            <span class="brand">INFOTRINK</span>
-            <span class="divider">|</span>
-            <span>Pusat Media Digital Terpercaya yang Menghimpun, Mengemas, dan Menyajikan Informasi serta Perkembangan Terkini dari Beragam Aspek Kehidupan dalam Satu Wadah Terpadu, Akurat, dan Berkelas</span>
-            <span class="divider">◆</span>
+    <!-- GAMBAR UTAMA (Diperkecil & Card Style) -->
+    <main class="website-image">
+        <img
+            src="file_0000000005b0821198b8019f43a73116.webp"
+            alt="Infotrink Banner"
+        >
+    </main>
+
+    <!-- TEKS BERJALAN (Super Panjang & Variatif) -->
+    <section class="marquee">
+        <div class="marquee-track">
+            <div class="marquee-item">
+                <!-- Bagian 1 -->
+                <span class="brand">INFOTRINK</span>
+                <span class="divider">/</span>
+                <span class="text-normal">Pusat Media Digital Terpercaya yang Menghimpun, Mengemas, dan Menyajikan Informasi serta Perkembangan Terkini</span>
+                <span class="divider">/</span>
+                
+                <!-- Bagian 2 -->
+                <span class="text-italic">Menyajikan berita secara mendalam, akurat, dan berimbang untuk membangun wawasan yang lebih luas</span>
+                <span class="divider">/</span>
+
+                <!-- Bagian 3 -->
+                <span class="text-normal">Menjadi wadah terpadu bagi berbagai aspek kehidupan dalam satu lingkungan digital yang terintegrasi, profesional, dan berkelas</span>
+                <span class="divider">/</span>
+
+                <!-- Bagian 4 -->
+                <span class="text-italic">Berdedikasi menyajikan informasi berkualitas melalui pemanfaatan teknologi digital yang inovatif dan terpercaya</span>
+                <span class="divider">/</span>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- PENGENALAN TENTANG INFOTRINK -->
-<section class="intro-section">
-    <h2 class="intro-title">PENGENALAN TENTANG INFOTRINK</h2>
-    <p class="intro-paragraph">
-        INFOTRINK merupakan sebuah wadah media digital yang dibentuk sebagai sarana penghimpunan, pengembangan, dan penyajian informasi serta berbagai bentuk perkembangan dalam satu kesatuan platform. INFOTRINK hadir dengan konsep yang terbuka dan terintegrasi untuk menaungi beragam bentuk informasi dan perkembangan yang dapat disajikan melalui media digital. Keberadaannya tidak dibatasi pada satu bentuk penyajian atau satu bidang tertentu, melainkan memberikan ruang bagi berbagai bentuk informasi untuk dihimpun, dikembangkan, dan disampaikan secara terstruktur dalam satu lingkungan digital yang saling terhubung. Melalui konsep tersebut, INFOTRINK dikembangkan sebagai platform yang memiliki arah, identitas, dan pengelolaan tersendiri dalam mendukung penyebaran informasi serta perkembangan berbagai hal melalui pemanfaatan teknologi digital.
-    </p>
-</section>
+    <!-- PENGENALAN TENTANG INFOTRINK (Desain Baru) -->
+    <section class="intro-section">
+        <div class="intro-header">
+            <h2 class="intro-title">Pengenalan Tentang Infotrink</h2>
+        </div>
+        <p class="intro-paragraph">
+            INFOTRINK merupakan sebuah wadah media digital yang dibentuk sebagai sarana penghimpunan, pengembangan, dan penyajian informasi serta berbagai bentuk perkembangan dalam satu kesatuan platform. INFOTRINK hadir dengan konsep yang terbuka dan terintegrasi untuk menaungi beragam bentuk informasi dan perkembangan yang dapat disajikan melalui media digital. Keberadaannya tidak dibatasi pada satu bentuk penyajian atau satu bidang tertentu, melainkan memberikan ruang bagi berbagai bentuk informasi untuk dihimpun, dikembangkan, dan disampaikan secara terstruktur dalam satu lingkungan digital yang saling terhubung. Melalui konsep tersebut, INFOTRINK dikembangkan sebagai platform yang memiliki arah, identitas, dan pengelolaan tersendiri dalam mendukung penyebaran informasi serta perkembangan berbagai hal melalui pemanfaatan teknologi digital.
+        </p>
+    </section>
+
+</div>
 
 </body>
 </html>
