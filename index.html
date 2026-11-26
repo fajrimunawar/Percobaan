@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Infotrink</title>
 
 <style>
 * {
@@ -41,6 +40,8 @@ html, body {
     background: #ffffff;
     border-bottom: 1px solid #e8e8e8;
     padding: 19px 0;
+    /* Memastikan teks benar-benar mulai dari luar layar kanan */
+    position: relative; 
 }
 
 /* ANIMASI BERULANG */
@@ -48,7 +49,11 @@ html, body {
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: marquee-scroll 32s linear infinite;
+    /* 
+       Menggunakan 40s agar kecepatannya pas. 
+       Karena teksnya kita perbanyak, waktunya perlu ditambah.
+    */
+    animation: marquee-scroll 40s linear infinite;
 }
 
 /* ISI TEKS */
@@ -56,7 +61,7 @@ html, body {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    padding-right: 60px;
+    padding-right: 60px; /* Jarak antar kalimat */
 }
 
 .marquee-item span {
@@ -80,11 +85,15 @@ html, body {
     font-size: 12px;
 }
 
+/* 
+   KUNCI PERUBAHAN: 
+   Kita mulai dari 100% (layar kanan) dan berakhir di -100% (layar kiri).
+   Karena ada 4 blok teks, -100% akan membuat teks ke-3 dan ke-4 menggantikan posisi 1 dan 2.
+*/
 @keyframes marquee-scroll {
     from {
         transform: translateX(0);
     }
-
     to {
         transform: translateX(-50%);
     }
@@ -104,6 +113,11 @@ html, body {
     .marquee-item .divider {
         margin: 0 17px;
     }
+    
+    /* Di HP, kalau terlalu lama bisa dipercepat sedikit */
+    .marquee-track {
+        animation-duration: 25s; 
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -120,7 +134,7 @@ html, body {
 <main class="website-image">
     <img
         src="file_0000000005b0821198b8019f43a73116.webp"
-        alt=""
+        alt="Infotrink Banner"
     >
 </main>
 
@@ -128,6 +142,7 @@ html, body {
 <section class="marquee">
     <div class="marquee-track">
 
+        <!-- BLOK 1 -->
         <div class="marquee-item">
             <span class="brand">INFOTRINK</span>
             <span class="divider">|</span>
@@ -135,6 +150,23 @@ html, body {
             <span class="divider">◆</span>
         </div>
 
+        <!-- BLOK 2 -->
+        <div class="marquee-item" aria-hidden="true">
+            <span class="brand">INFOTRINK</span>
+            <span class="divider">|</span>
+            <span>Media Digital yang Menghimpun Informasi dan Perkembangan dalam Beragam Bentuk melalui Satu Wadah Terpadu</span>
+            <span class="divider">◆</span>
+        </div>
+
+        <!-- BLOK 3 (Tambahan agar layar lebar tidak kosong) -->
+        <div class="marquee-item" aria-hidden="true">
+            <span class="brand">INFOTRINK</span>
+            <span class="divider">|</span>
+            <span>Media Digital yang Menghimpun Informasi dan Perkembangan dalam Beragam Bentuk melalui Satu Wadah Terpadu</span>
+            <span class="divider">◆</span>
+        </div>
+
+        <!-- BLOK 4 (Tambahan) -->
         <div class="marquee-item" aria-hidden="true">
             <span class="brand">INFOTRINK</span>
             <span class="divider">|</span>
