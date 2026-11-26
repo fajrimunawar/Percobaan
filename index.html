@@ -20,27 +20,26 @@ html, body {
 }
 
 /* =========================================
-   PERUBAHAN: GAMBAR WEBSITE DIPERKECIL
+   GAMBAR WEBSITE (FULL WIDTH KIRI-KANAN)
    ========================================= */
 .website-image {
     width: 100%;
-    /* Memberikan ruang agar gambar tidak menempel ke ujung layar */
-    padding: 0 10px; 
-    background: #ffffff;
+    /* Menghapus padding agar benar-benar mentok ujung layar */
+    padding: 0; 
+    margin: 0;
+    overflow: hidden; /* Mencegah gambar keluar jalur */
 }
 
 .website-image img {
     display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    width: 100%; /* Memaksa gambar memenuhi lebar layar */
     
-    /* BATASAN UKURAN AGAR TIDAK TERLALU BESAR */
-    max-height: 400px; /* Anda bisa ubah angka ini (misal 350px atau 450px) */
-    max-width: 1200px; /* Batas lebar maksimal di layar besar */
+    /* KUNCI UTAMA: Membatasi tinggi agar tidak kebesaran */
+    max-height: 380px; /* Silakan ubah angka ini jika masih terasa besar/kecil */
     
-    /* Memusatkan gambar */
-    margin: 0 auto; 
+    /* Agar gambar tidak gepeng saat lebarnya ditarik full, tapi dipotong rapi di tengah */
+    object-fit: cover; 
+    object-position: center; 
 }
 
 /* AREA TEKS BERJALAN */
@@ -129,12 +128,9 @@ html, body {
 
 /* RESPONSIVE UNTUK HP */
 @media (max-width: 600px) {
-    .website-image {
-        padding: 0; /* Di HP gambar menempel full */
-    }
-    
     .website-image img {
-        max-height: 200px; /* Di HP gambarnya lebih kecil lagi */
+        /* Tinggi gambar di HP dibuat lebih pendek agar tidak menutupi layar */
+        max-height: 220px; 
     }
 
     .marquee {
