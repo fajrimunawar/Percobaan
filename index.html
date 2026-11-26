@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFOTRINK</title>
+    <title></title>
+
     <style>
         * {
             margin: 0;
@@ -13,95 +15,35 @@
 
         html, body {
             width: 100%;
-            height: 100dvh;
-            overflow: hidden;
-            display: grid;
-            grid-template-rows: auto 1fr;
-            background-color: #050b18;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100%;
+            background: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* Baris 1: Gambar mentok di atas & utuh tanpa terpotong */
-        .top-media {
+        .website {
             width: 100%;
-            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .website img {
             display: block;
-        }
-
-        .top-media img {
             width: 100%;
-            max-height: 76dvh;
+            height: auto;
+            max-width: 100%;
             object-fit: contain;
             object-position: top center;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Baris 2: Area tepat di bawah gambar untuk kalimat berjalan */
-        .below-image-stage {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #0b1933 0%, #050b18 100%);
-            border-top: 2px solid #0284c7;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-        }
-
-        .sentence-stream {
-            position: absolute;
-            left: 0;
-            white-space: nowrap;
-            color: #f8fafc;
-            font-size: clamp(14px, 1.8vw, 18px);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            will-change: transform;
-            animation: glideRightToLeft 24s linear infinite;
-        }
-
-        .sentence-stream strong {
-            color: #38bdf8;
-            font-weight: 700;
-        }
-
-        .sentence-stream:nth-child(2) {
-            animation-delay: -8s;
-        }
-
-        .sentence-stream:nth-child(3) {
-            animation-delay: -16s;
-        }
-
-        @keyframes glideRightToLeft {
-            0% {
-                transform: translate3d(100vw, 0, 0);
-            }
-            100% {
-                transform: translate3d(-120%, 0, 0);
-            }
         }
     </style>
 </head>
+
 <body>
 
-    <header class="top-media">
-        <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK">
-    </header>
-
-    <main class="below-image-stage">
-        <div class="sentence-stream">
-            <strong>INFOTRINK Digital</strong> &mdash; Ekosistem Informasi &amp; Media Pengetahuan Terkurasi Berstandar Profesional
-        </div>
-        <div class="sentence-stream">
-            Menghadirkan Wawasan Strategis, Analisis Tajam, dan Kualitas Informasi Berkelas untuk Era Digital
-        </div>
-        <div class="sentence-stream">
-            <strong>INFOTRINK</strong> &mdash; Keunggulan Perspektif, Integritas Data, dan Inovasi Pengetahuan Masa Depan
-        </div>
+    <main class="website">
+        <img
+            src="file_0000000005b0821198b8019f43a73116.webp"
+            alt=""
+        >
     </main>
 
 </body>
