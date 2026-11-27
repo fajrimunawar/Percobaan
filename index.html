@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -19,5 +19,152 @@
 </head>
 <body>
   <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK - Digital Information & Knowledge Media">
+</body>
+</html> . Ingat di bawah gambar ya kalimat berjalan desain itu jangan di buat kan kita step by step pelan pelan langsung buat kan keseluruhan nya yang Saya suruh Show full message
+File utama sudah dibuat. Sekarang saya uji dulu secara visual (pake banner tiruan karena file webp asli tidak ada di sini) untuk memastikan desain dan gerakannya benar:
+
+Gerakannya sudah benar — masuk mulus dari kanan, berjalan ke kiri. Sekarang cek versi desktop dan pastikan timing-nya pas:
+
+Tampilan desktop sudah berkelas. Terakhir, saya cek bagian akhir kalimat (tagline emas) dan perilaku keluarnya di sisi kiri:
+
+Semua tes lolos. Tutup browser dan bereskan:
+
+Selesai. Kalimat berjalan sudah jadi, langsung utuh satu paket, dan sudah saya uji di layar HP maupun desktop — masuk mulus dari tepi kanan, berjalan tenang ke kiri, keluar sepenuhnya dulu baru mulai lagi dari kanan (tidak ada kemunculan/hilang mendadak, tidak ada dua kalimat menumpuk).
+
+File: index.html — tinggal ganti file index.html di GitHub Pages kamu dengan ini (nama gambar file_0000000005b0821198b8019f43a73116.webp sudah tetap sama, tidak perlu diubah apa-apa).
+
+Ini kode lengkapnya:
+
+Yang saya buat di dalamnya:
+
+Desain bar berkelas — gradasi biru navy senada dengan banner INFOTRINK kamu, garis tipis emas di atas-bawah, tulisan putih lembut, nama INFOTRINK dan tagline Information. Knowledge. Insight. berwarna emas, dengan font Montserrat + Playfair Display.
+Gerakan sesuai permintaan — kalimat mulai dari luar tepi kanan, berjalan perlahan dan stabil ke kiri, baru setelah kalimat selesai sepenuhnya keluar di kiri, putaran berikutnya dimulai. Kuncinya ada di padding-left: 100% + animasi translateX.
+Kecepatan otomatis pas — script menghitung lebar kalimat dan layar, jadi di HP maupun desktop kecepatannya konsisten (110 piksel/detik, standar ticker yang tenang, tidak cepat tidak lambat). Mau diubah? Ganti saja angka KECEPATAN = 110 di bagian script: makin besar makin cepat, makin kecil makin lambat.
+Kalimat panjang dan berwibawa — menggambarkan identitas INFOTRINK sesuai dokumen konsep kamu: wadah digital independen, lintas bidang, mendukung pembelajaran mandiri.
+Kalau nanti mau lanjut, tinggal bilang — misalnya menambah kalimat kedua yang bergantian, mengganti warna, atau menambahkan bagian konten di bawah bar berjalan ini.
+
+Generated files
+1
+HTML
+index
+· html
+Send a Message
+
+
+Chat controls
+HTML
+index.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INFOTRINK — Information. Knowledge. Insight.</title>
+<meta name="description" content="INFOTRINK — wadah digital independen untuk informasi, pengetahuan, wawasan, dan gagasan lintas bidang.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+  img {
+    width: 100%;       /* lebar penuh: mentok kiri sampai kanan */
+    height: auto;      /* tinggi mengikuti proporsi asli, tidak gepeng & tidak terpotong */
+    display: block;    /* hilangkan ruang kosong di sekeliling gambar */
+  }
+
+  /* ================= BAR KALIMAT BERJALAN INFOTRINK ================= */
+  .marquee-bar {
+    position: relative;
+    overflow: hidden;              /* teks tersembunyi mulus di tepi, tidak ada scrollbar */
+    padding: 16px 0;
+    background: linear-gradient(90deg, #081C3A 0%, #123B72 22%, #1C559B 50%, #123B72 78%, #081C3A 100%);
+    border-top: 1px solid rgba(233, 196, 106, 0.95);
+    border-bottom: 1px solid rgba(233, 196, 106, 0.95);
+    box-shadow: 0 8px 24px rgba(8, 28, 58, 0.28);
+  }
+  .marquee-track {
+    display: inline-block;
+    white-space: nowrap;           /* kalimat tidak pernah terpotong menjadi dua baris */
+    padding-left: 100%;            /* posisi awal: tepat di luar tepi kanan layar */
+    will-change: transform;
+    animation: infotrink-marquee 30s linear infinite;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 15.5px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    color: #F4F7FB;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  }
+  .marquee-track .brand {
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    color: #E9C46A;
+  }
+  .marquee-track .tagline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #E9C46A;
+  }
+  /* Gerakan: masuk dari kanan -> menyeberang -> keluar sepenuhnya di kiri -> baru mulai lagi */
+  @keyframes infotrink-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+  @media (max-width: 600px) {
+    .marquee-bar { padding: 13px 0; }
+    .marquee-track { font-size: 13.5px; letter-spacing: 0.3px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      padding-left: 0;
+      white-space: normal;
+      display: block;
+      text-align: center;
+      padding: 4px 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <img src="file_0000000005b0821198b8019f43a73116.webp" alt="INFOTRINK - Digital Information & Knowledge Media">
+
+  <!-- Kalimat berjalan berada di BAWAH gambar -->
+  <div class="marquee-bar" id="marqueeBar">
+    <span class="marquee-track" id="marqueeTrack">
+      Selamat datang di <span class="brand">INFOTRINK</span> — wadah digital independen untuk informasi, pengetahuan, wawasan, dan gagasan lintas bidang; menghimpun pembahasan ilmu pengetahuan, teknologi, pendidikan, ekonomi, bisnis, sosial, budaya, lingkungan, hingga perkembangan dunia, guna mendukung pembelajaran mandiri, memperluas cakrawala berpikir, dan menumbuhkan pemahaman yang utuh bagi setiap kalangan. <span class="brand">INFOTRINK</span> <span class="tagline">— Information. Knowledge. Insight.</span>
+    </span>
+  </div>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('marqueeBar');
+      var track = document.getElementById('marqueeTrack');
+      var KECEPATAN = 110; // piksel per detik — naikkan angka agar lebih cepat, turunkan agar lebih lambat
+
+      function aturDurasi() {
+        var jarak = track.offsetWidth; // lebar teks + lebar layar (jarak tempuh satu putaran penuh)
+        if (jarak > 0) {
+          track.style.animationDuration = (jarak / KECEPATAN).toFixed(2) + 's';
+        }
+      }
+
+      window.addEventListener('load', aturDurasi);
+      window.addEventListener('resize', aturDurasi);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(aturDurasi); // hitung ulang setelah font selesai dimuat
+      }
+      aturDurasi();
+    })();
+  </script>
+
 </body>
 </html>
