@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
 <title>INFOTRINK — Information. Knowledge. Insight.</title>
 <meta name="description" content="INFOTRINK — wadah digital independen untuk informasi, pengetahuan, wawasan, dan gagasan lintas bidang.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,6 +96,9 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
+    width: 100%;
+    max-width: 520px;              /* di HP: kotak tidak melebar berlebihan */
+    margin: 0 auto;                /* dan selalu berada di tengah */
     background: #ffffff;
     border: 1px solid #D9E3F0;
     border-radius: 14px;
@@ -141,8 +146,12 @@
   }
   .tombol:active { transform: translateY(0); }
 
-  @media (min-width: 768px) {
-    .bagian-kartu { grid-template-columns: repeat(3, 1fr); gap: 16px; }  /* PC/Laptop: kotak berjajar ke samping */
+  /* PC/Laptop (bukan layar sentuh, layar lebar): kotak berjajar ke samping.
+     Keputusan dihitung oleh JavaScript (class "layar-komputer" pada <body>)
+     supaya HP yang browser-nya merender lebar desktop TETAP tersusun ke bawah. */
+  body.layar-komputer .bagian-kartu { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  body.layar-komputer .kartu { max-width: none; margin: 0; }
+  @media (min-width: 900px) {
     .marquee-track { font-size: 15.5px; }
   }
   @media (max-width: 600px) {
@@ -203,6 +212,23 @@
     </section>
 
   </div>
+
+  <script>
+    /* ===== Penentu tata letak kotak =====
+       Perangkat layar sentuh (HP/tablet) = kotak tersusun ke bawah, di tengah.
+       Komputer dengan mouse + layar lebar = kotak berjajar ke samping. */
+    (function () {
+      function klasifikasi() {
+        var perangkatSentuh = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        var layarLebar = window.matchMedia('(min-width: 900px)').matches;
+        var komputer = layarLebar && !perangkatSentuh;
+        document.body.classList.toggle('layar-komputer', komputer);
+      }
+      window.addEventListener('resize', klasifikasi);
+      window.addEventListener('orientationchange', klasifikasi);
+      klasifikasi();
+    })();
+  </script>
 
   <script>
     (function () {
